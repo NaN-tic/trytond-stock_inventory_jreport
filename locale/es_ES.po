@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Cost Value"
+msgstr "Valor de coste"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Inventory"
+msgstr "Inventario"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Inventory Total"
+msgstr "Total inventario"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Product"
+msgstr "Productos"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "model:ir.action,name:stock_inventory_report_action"
+msgid "Stock Inventory"
+msgstr "Inventario de stock"
