@@ -3,12 +3,11 @@
 	<property name="ireport.zoom" value="2.143588810000017"/>
 	<property name="ireport.x" value="33"/>
 	<property name="ireport.y" value="0"/>
-	<property name="TRYTON_RELATIONS" value="[&apos;outgoing_moves&apos;]"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="TAXES_DS" class="java.lang.Object"/>
-	<parameter name="shipment_qty_decimal" class="java.lang.Boolean"/>
+	<parameter name="locations" class="java.lang.String"/>
 	<queryString language="xPath">
 		<![CDATA[]]>
 	</queryString>
@@ -71,20 +70,20 @@
 		<initialValueExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></initialValueExpression>
 	</variable>
 	<variable name="inventory_cost_value" class="java.lang.Number" calculation="Sum">
-		<variableExpression><![CDATA[$F{quantity} * $F{cost_value}]]></variableExpression>
+		<variableExpression><![CDATA[$F{cost_value}]]></variableExpression>
 	</variable>
 	<group name="Inventory" isStartNewPage="true" isResetPageNumber="true">
 		<groupHeader>
 			<band height="16">
 				<textField>
-					<reportElement x="82" y="0" width="148" height="12" uuid="d4ea5653-f41c-422f-acc1-ceada0793612"/>
+					<reportElement x="112" y="0" width="300" height="12" uuid="d4ea5653-f41c-422f-acc1-ceada0793612"/>
 					<textElement>
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Product")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="351" y="0" width="50" height="12" uuid="7d0f7e2b-3332-4f27-be98-a62091577018"/>
+					<reportElement x="417" y="0" width="50" height="12" uuid="7d0f7e2b-3332-4f27-be98-a62091577018"/>
 					<textElement textAlignment="Right">
 						<font size="9"/>
 					</textElement>
@@ -94,25 +93,18 @@
 					<reportElement x="4" y="13" width="542" height="1" uuid="a23abe75-6da8-4f3c-868a-0981110f0389"/>
 				</line>
 				<textField>
-					<reportElement x="4" y="0" width="75" height="12" uuid="1cf94199-274e-4fb8-94b0-750a755e8e6a"/>
+					<reportElement x="4" y="0" width="105" height="12" uuid="1cf94199-274e-4fb8-94b0-750a755e8e6a"/>
 					<textElement textAlignment="Left">
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Code")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="401" y="0" width="77" height="12" uuid="1b685b4f-7984-4415-bdc7-2c9e9e54d876"/>
+					<reportElement x="467" y="0" width="77" height="12" uuid="1b685b4f-7984-4415-bdc7-2c9e9e54d876"/>
 					<textElement textAlignment="Right">
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L}, "Cost Value")]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="478" y="0" width="66" height="12" uuid="72715637-b8ad-46a1-a1a9-c89fde4cbd27"/>
-					<textElement textAlignment="Right">
-						<font size="9"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -168,60 +160,52 @@
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="10" y="78" width="250" height="15" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
+				<reportElement x="10" y="78" width="528" height="15" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
 				<textElement textAlignment="Left">
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[tr($V{L},"Inventory")]]></textFieldExpression>
+				<textFieldExpression><![CDATA[tr($V{L},"Inventory") + (
+    $P{locations} != null && $P{locations} != ""
+    ?
+        ": " + $P{locations}
+    :
+        ""
+)]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
 	<detail>
 		<band height="15" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="82" y="2" width="269" height="12" uuid="848831dc-c427-42ec-880f-72bcd1cbc193"/>
+				<reportElement x="112" y="2" width="300" height="12" uuid="848831dc-c427-42ec-880f-72bcd1cbc193"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{product-name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="351" y="2" width="50" height="12" uuid="c0ee0786-746b-4c0d-9976-8f8b35bc1464"/>
+				<reportElement x="417" y="2" width="50" height="12" uuid="c0ee0786-746b-4c0d-9976-8f8b35bc1464"/>
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00">
-				<reportElement x="4" y="2" width="75" height="12" uuid="f5611945-7651-46a2-86bb-5081adf88d2f"/>
+				<reportElement x="4" y="2" width="105" height="12" uuid="f5611945-7651-46a2-86bb-5081adf88d2f"/>
 				<textElement textAlignment="Left">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{product-code}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="478" y="2" width="56" height="12" uuid="ec43897a-bf45-4166-a66f-cc89b2c9996e"/>
-				<textElement textAlignment="Right">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{quantity} * $F{cost_value}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="403" y="2" width="65" height="12" uuid="e930b2c8-b2f8-4ad1-85ec-a179e847dce7"/>
+				<reportElement x="469" y="2" width="65" height="12" uuid="e930b2c8-b2f8-4ad1-85ec-a179e847dce7"/>
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cost_value}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="534" y="2" width="10" height="12" uuid="9cb753d1-e257-497b-80d1-1141db34e4eb"/>
-				<textElement textAlignment="Right">
-					<font size="9" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{company-currency-symbol}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="468" y="2" width="10" height="12" uuid="2d4aeea4-3da4-4674-84d5-5bacd3ca9124"/>
+				<reportElement x="534" y="2" width="10" height="12" uuid="2d4aeea4-3da4-4674-84d5-5bacd3ca9124"/>
 				<textElement textAlignment="Right">
 					<font size="9" isBold="false"/>
 				</textElement>

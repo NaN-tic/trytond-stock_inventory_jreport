@@ -26,10 +26,10 @@ msgctxt "jasper:stock.inventory.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "jasper:stock.inventory.jreport:"
-msgid "Total"
-msgstr "Total"
-
 msgctxt "model:ir.action,name:stock_inventory_report_action"
 msgid "Stock Inventory"
 msgstr "Inventario de stock"
+
+msgctxt "wizard_button:stock.products_by_locations,start,print_:"
+msgid "Print"
+msgstr "Imprimir"

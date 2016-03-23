@@ -4,9 +4,13 @@
 from trytond.pool import Pool
 
 from .inventory import *
+from .location import *
 
 
 def register():
     Pool.register(
         Inventory,
         module='stock_inventory_jreport', type_='report')
+    Pool.register(
+        ProductsByLocations,
+        module='stock_inventory_jreport', type_='wizard')
