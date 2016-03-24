@@ -46,12 +46,12 @@ class ProductsByLocations:
 
         locations = Location.browse(locations)
         if len(locations) == 1:
-            data['locations'] = ("%s [%s]" % (locations[0].name,
-                    locations[0].code))
+            data['locations'] = ("%s [%s]" % (locations[0].name.strip(),
+                    locations[0].code.strip()))
         elif len(locations) > 1:
             ls = []
             for l in Location.browse(locations):
-                ls.append("%s [%s]" % (l.name, l.code))
+                ls.append("%s [%s]" % (l.name.strip(), l.code.strip()))
             data['locations'] = "/ ".join(ls)
         else:
             data['locations'] = ""
