@@ -7,16 +7,20 @@ msgid "Code"
 msgstr "Código"
 
 msgctxt "jasper:stock.inventory.jreport:"
-msgid "Cost Value"
-msgstr "Valor de coste"
+msgid "Expected Quantity"
+msgstr "Cantidad estimada"
 
 msgctxt "jasper:stock.inventory.jreport:"
 msgid "Inventory"
 msgstr "Inventario"
 
 msgctxt "jasper:stock.inventory.jreport:"
-msgid "Inventory Total"
-msgstr "Total inventario"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "jasper:stock.inventory.jreport:"
+msgid "Page"
+msgstr "Página"
 
 msgctxt "jasper:stock.inventory.jreport:"
 msgid "Product"
@@ -24,11 +28,39 @@ msgstr "Productos"
 
 msgctxt "jasper:stock.inventory.jreport:"
 msgid "Quantity"
+msgstr "Importe"
+
+msgctxt "jasper:stock.inventory.valued.jreport:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "jasper:stock.inventory.valued.jreport:"
+msgid "Cost Value"
+msgstr "Valor de coste"
+
+msgctxt "jasper:stock.inventory.valued.jreport:"
+msgid "Inventory"
+msgstr "Inventario"
+
+msgctxt "jasper:stock.inventory.valued.jreport:"
+msgid "Inventory Total"
+msgstr "Total inventario"
+
+msgctxt "jasper:stock.inventory.valued.jreport:"
+msgid "Product"
+msgstr "Productos"
+
+msgctxt "jasper:stock.inventory.valued.jreport:"
+msgid "Quantity"
 msgstr "Cantidad"
 
 msgctxt "model:ir.action,name:stock_inventory_report_action"
 msgid "Stock Inventory"
 msgstr "Inventario de stock"
+
+msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
+msgid "Stock Inventory Valued"
+msgstr "Inventario de stock valorado"
 
 msgctxt "wizard_button:stock.products_by_locations,start,print_:"
 msgid "Print"

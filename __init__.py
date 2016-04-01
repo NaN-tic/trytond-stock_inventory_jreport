@@ -9,7 +9,8 @@ from .location import *
 
 def register():
     Pool.register(
-        Inventory,
+        InventoryReport,
+        InventoryValuedReport,
         module='stock_inventory_jreport', type_='report')
     Pool.register(
         ProductsByLocations,

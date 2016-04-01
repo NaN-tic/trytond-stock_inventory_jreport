@@ -1,267 +1,214 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="delivery_note_valued" language="i18ngroovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c91ba985-840e-4136-8813-2033d76ec71b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inventory" pageWidth="595" pageHeight="842" columnWidth="511" leftMargin="42" rightMargin="42" topMargin="28" bottomMargin="28" uuid="a267cb3d-9d42-4a5d-a0ba-4cb5aa02ec6d">
 	<property name="ireport.zoom" value="1.9487171000000154"/>
-	<property name="ireport.x" value="25"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
+	<style name="defecto" isDefault="true" forecolor="#000000" backcolor="#FFFFFF" fill="Solid" vAlign="Middle" markup="none" pattern="" isBlankWhenNull="true" fontName="DejaVu Sans" fontSize="8"/>
+	<style name="title" style="defecto" fontSize="14" isBold="true"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="TAXES_DS" class="java.lang.Object"/>
-	<parameter name="locations" class="java.lang.String" isForPrompting="false"/>
 	<queryString language="xPath">
-		<![CDATA[]]>
+		<![CDATA[/data/record]]>
 	</queryString>
-	<field name="id" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/id]]></fieldDescription>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
 	</field>
-	<field name="company-logo" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/logo-logo]]></fieldDescription>
+	<field name="location" class="java.lang.String">
+		<fieldDescription><![CDATA[location/name]]></fieldDescription>
 	</field>
-	<field name="company-footer" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/footer-footer]]></fieldDescription>
+	<field name="date" class="java.util.Date">
+		<fieldDescription><![CDATA[date]]></fieldDescription>
 	</field>
-	<field name="company-header" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/header-header]]></fieldDescription>
+	<field name="line_product_code" class="java.lang.String">
+		<fieldDescription><![CDATA[lines/product/code]]></fieldDescription>
 	</field>
-	<field name="company-name" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/name-name]]></fieldDescription>
+	<field name="line_product" class="java.lang.String">
+		<fieldDescription><![CDATA[lines/product/template/name]]></fieldDescription>
 	</field>
-	<field name="company-street" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/street-street]]></fieldDescription>
+	<field name="line_lot" class="java.lang.String">
+		<fieldDescription><![CDATA[lines/lot/number]]></fieldDescription>
 	</field>
-	<field name="company-zip" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/zip-zip]]></fieldDescription>
-	</field>
-	<field name="company-city" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/city-city]]></fieldDescription>
-	</field>
-	<field name="company-country" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/country-country/name-name]]></fieldDescription>
-	</field>
-	<field name="company-phone" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/phone-phone]]></fieldDescription>
-	</field>
-	<field name="company-email" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/email-email]]></fieldDescription>
-	</field>
-	<field name="company-currency-symbol" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/currency-currency/symbol-symbol]]></fieldDescription>
-	</field>
-	<field name="company-vat_number" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/vat_number-vat_number]]></fieldDescription>
-	</field>
-	<field name="product-code" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/code-code]]></fieldDescription>
-	</field>
-	<field name="product-name" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/rec_name-rec_name]]></fieldDescription>
-	</field>
-	<field name="quantity" class="java.lang.Number">
-		<fieldDescription><![CDATA[/data/record/quantity-quantity]]></fieldDescription>
-	</field>
-	<field name="cost_value" class="java.lang.Number">
-		<fieldDescription><![CDATA[/data/record/cost_value-cost_value]]></fieldDescription>
+	<field name="line_expected_quantity" class="java.lang.Number">
+		<fieldDescription><![CDATA[lines/expected_quantity]]></fieldDescription>
 	</field>
 	<field name="lang-code" class="java.lang.String">
 		<fieldDescription><![CDATA[User/language/code]]></fieldDescription>
 	</field>
+	<field name="line_quantity" class="java.lang.Number">
+		<fieldDescription><![CDATA[lines/quantity]]></fieldDescription>
+	</field>
+	<sortField name="line_product"/>
+	<sortField name="line_lot"/>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></initialValueExpression>
 	</variable>
-	<variable name="inventory_cost_value" class="java.lang.Number" calculation="Sum">
-		<variableExpression><![CDATA[$F{cost_value}]]></variableExpression>
-	</variable>
-	<group name="Inventory" isStartNewPage="true" isResetPageNumber="true">
-		<groupHeader>
-			<band height="16">
-				<textField>
-					<reportElement x="112" y="0" width="300" height="12" uuid="d4ea5653-f41c-422f-acc1-ceada0793612"/>
-					<textElement>
-						<font size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Product")]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="417" y="0" width="50" height="12" uuid="7d0f7e2b-3332-4f27-be98-a62091577018"/>
-					<textElement textAlignment="Right">
-						<font size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Quantity")]]></textFieldExpression>
-				</textField>
-				<line>
-					<reportElement x="4" y="13" width="542" height="1" uuid="a23abe75-6da8-4f3c-868a-0981110f0389"/>
-				</line>
-				<textField>
-					<reportElement x="4" y="0" width="105" height="12" uuid="1cf94199-274e-4fb8-94b0-750a755e8e6a"/>
-					<textElement textAlignment="Left">
-						<font size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Code")]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="467" y="0" width="77" height="12" uuid="1b685b4f-7984-4415-bdc7-2c9e9e54d876"/>
-					<textElement textAlignment="Right">
-						<font size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L}, "Cost Value")]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
-		<groupFooter>
-			<band height="17" splitType="Prevent">
-				<line>
-					<reportElement x="4" y="1" width="542" height="1" uuid="047350d2-2791-4bca-91d0-7045151f997a"/>
-				</line>
-				<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-					<reportElement x="478" y="4" width="56" height="12" uuid="1d1d0a00-f600-4503-b24e-ce0e7d113e05"/>
-					<textElement textAlignment="Right">
-						<font size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$V{inventory_cost_value}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="389" y="4" width="88" height="12" uuid="0a14639c-dd4c-453b-bd26-de91483a0e90"/>
-					<textElement textAlignment="Right">
-						<font size="9" isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Inventory Total")]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="534" y="4" width="10" height="12" uuid="c210922f-6821-4123-9fc1-efc302ead54a"/>
-					<textElement textAlignment="Right">
-						<font size="9" isBold="false"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{company-currency-symbol}]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupFooter>
-	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
 	<pageHeader>
-		<band height="100">
+		<band height="53" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="10" y="65" width="535" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="b4c4f3c0-a273-45bc-aac8-f891e3173b3a"/>
-				<textElement textAlignment="Left">
-					<font size="7"/>
+				<reportElement style="title" x="0" y="0" width="511" height="23" uuid="b9cbb237-cffd-445a-9bd0-943b6b834c11"/>
+				<textElement>
+					<font size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-header}]]></textFieldExpression>
-			</textField>
-			<image>
-				<reportElement x="294" y="0" width="261" height="60" isRemoveLineWhenBlank="true" uuid="99c09572-af27-4793-a093-2bdb7b2b8184">
-					<printWhenExpression><![CDATA[$F{company-logo}.length()>0]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
-			</image>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement x="10" y="78" width="535" height="15" isPrintWhenDetailOverflows="true" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[tr($V{L},"Inventory") + (
-    $P{locations} != null && $P{locations} != ""
-    ?
-        ": " + $P{locations}
-    :
-        ""
-)]]></textFieldExpression>
+				<textFieldExpression><![CDATA[tr($V{L},"Inventory") + ": " + $F{location} + " " + new SimpleDateFormat("dd/MM/yyyy").format($F{date})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="36" width="290" height="11" forecolor="#808080" uuid="1e1c932a-7243-47de-96be-11401a33578d"/>
-				<textElement>
-					<font size="8"/>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="38" width="40" height="15" backcolor="#DCDCDC" uuid="967abf03-4a39-484e-9dd5-02c50991201c"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-vat_number}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="1" y="11" width="290" height="11" forecolor="#808080" uuid="706ea89b-ffae-49d8-96d3-6bea702c2dc3"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{company-street}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[tr($V{L},"Code")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="1" y="0" width="290" height="11" forecolor="#010101" uuid="5e108147-c724-41e6-a6c6-587d8b399dd6"/>
-				<textElement>
-					<font size="9" isBold="true"/>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="40" y="38" width="230" height="15" backcolor="#DCDCDC" uuid="aa111060-d85c-41d5-9123-5c8c20c81e38"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[tr($V{L},"Product")]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="1" y="23" width="290" height="11" forecolor="#808080" uuid="37c03fb9-cd67-417e-875a-147f8c5a4094"/>
-				<textElement>
-					<font size="8"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="341" y="38" width="85" height="15" backcolor="#DCDCDC" uuid="134e7abc-a998-4f12-8876-3f1217c7f8b3"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-zip}+" "+$F{company-city}+" "+$F{company-country}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[tr($V{L},"Expected Quantity")]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="0" y="48" width="290" height="12" forecolor="#808080" uuid="558f5703-1dc1-4bf1-964f-51b3530a24e0"/>
-				<textElement>
-					<font size="8"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="270" y="38" width="71" height="15" backcolor="#DCDCDC" uuid="0b1a927e-216f-4f7c-856a-48f78da4b617"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
-				<textFieldExpression><![CDATA["T. "+ $F{company-phone}+" "+$F{company-email}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[tr($V{L},"Lot")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="426" y="38" width="85" height="15" backcolor="#DCDCDC" uuid="d807ae97-3345-4343-af1c-4c705cfd03aa"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[tr($V{L},"Quantity")]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
 	<detail>
 		<band height="15" splitType="Stretch">
-			<textField isStretchWithOverflow="true">
-				<reportElement x="112" y="2" width="300" height="12" uuid="848831dc-c427-42ec-880f-72bcd1cbc193"/>
-				<textElement>
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{product-name}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="417" y="2" width="50" height="12" uuid="c0ee0786-746b-4c0d-9976-8f8b35bc1464"/>
-				<textElement textAlignment="Right">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00">
-				<reportElement x="4" y="2" width="105" height="12" uuid="f5611945-7651-46a2-86bb-5081adf88d2f"/>
-				<textElement textAlignment="Left">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{product-code}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="469" y="2" width="65" height="12" uuid="e930b2c8-b2f8-4ad1-85ec-a179e847dce7"/>
-				<textElement textAlignment="Right">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{cost_value}]]></textFieldExpression>
+			<textField>
+				<reportElement x="0" y="0" width="40" height="15" uuid="1217f190-9742-47bb-a0a7-68f18566dbf0"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{line_product_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="534" y="2" width="10" height="12" uuid="2d4aeea4-3da4-4674-84d5-5bacd3ca9124"/>
-				<textElement textAlignment="Right">
-					<font size="9" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{company-currency-symbol}]]></textFieldExpression>
+				<reportElement x="40" y="0" width="230" height="15" uuid="b9a15e00-3a74-407a-85aa-64f37cafe6ce"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{line_product}]]></textFieldExpression>
+			</textField>
+			<textField pattern="0">
+				<reportElement x="341" y="0" width="85" height="15" uuid="74b35a9a-7e06-4812-891e-cda95bda34a6"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{line_expected_quantity} > 0 ? $F{line_expected_quantity} : 0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="0" width="85" height="15" uuid="9d899026-ba3d-43b7-9380-5d7c089ccbb2"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{line_quantity} > 0 ? $F{line_quantity} : 0]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="71" height="15" uuid="0c9d0e49-e1e0-4c90-8a2f-635de9d5570b"/>
+				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{line_lot}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="51" splitType="Stretch">
-			<rectangle>
-				<reportElement x="529" y="10" width="100" height="20" forecolor="#FEFEFE" backcolor="#A0A0A0" uuid="62880105-e0bb-4319-bdfc-3e51da0fe1ad"/>
-			</rectangle>
-			<textField>
-				<reportElement x="538" y="15" width="80" height="11" forecolor="#FCFCFC" uuid="d2afcc4d-d898-46eb-b7d5-112cd834b914"/>
-				<textElement textAlignment="Left">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="defecto" x="280" y="1" width="171" height="17" backcolor="#FFFFFF" uuid="476ab99b-8789-4838-a580-93b54da78938"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[tr($V{L},"Page")]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="1" y="38" width="480" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="2ab3736e-c838-4775-85c9-a5ea857f2d3f"/>
-				<textElement textAlignment="Center">
-					<font size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{company-footer}]]></textFieldExpression>
+				<reportElement style="defecto" x="451" y="1" width="42" height="17" uuid="0b4fe94c-b417-4d56-94cf-b86c12979948"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER} + "/"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" evaluationTime="Report">
+				<reportElement style="defecto" x="493" y="1" width="18" height="17" uuid="36490c92-5f40-4939-9e2c-1548c7fe5f37"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy HH.mm.ss">
-				<reportElement x="481" y="38" width="74" height="10" uuid="9be35e08-5762-43e2-846a-a3305f0fa13a"/>
+				<reportElement x="0" y="8" width="74" height="10" uuid="81773a23-f4d1-4205-aea2-bf7fcd8141fc"/>
 				<textElement verticalAlignment="Middle">
 					<font size="6"/>
 				</textElement>
@@ -269,4 +216,7 @@
 			</textField>
 		</band>
 	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
 </jasperReport>

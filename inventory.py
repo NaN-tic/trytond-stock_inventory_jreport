@@ -6,12 +6,16 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 
-__all__ = ['Inventory']
+__all__ = ['InventoryReport', 'InventoryValuedReport']
 __metaclass__ = PoolMeta
 
 
-class Inventory(JasperReport):
+class InventoryReport(JasperReport):
     __name__ = 'stock.inventory.jreport'
+
+
+class InventoryValuedReport(JasperReport):
+    __name__ = 'stock.inventory.valued.jreport'
 
     @classmethod
     def execute(cls, ids, data):
@@ -21,5 +25,5 @@ class Inventory(JasperReport):
             data['parameters']['locations'] = data['locations']
         if 'context' in data:
             with Transaction().set_context(data['context']):
-                return super(Inventory, cls).execute(ids, data)
-        return super(Inventory, cls).execute(ids, data)
+                return super(InventoryValuedReport, cls).execute(ids, data)
+        return super(InventoryValuedReport, cls).execute(ids, data)

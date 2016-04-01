@@ -12,7 +12,8 @@ __metaclass__ = PoolMeta
 class ProductsByLocations:
     __name__ = 'stock.products_by_locations'
 
-    print_ = StateAction('stock_inventory_jreport.stock_inventory_report_action')
+    print_ = StateAction(
+        'stock_inventory_jreport.stock_inventory_valued_report_action')
 
     @classmethod
     def __setup__(cls):

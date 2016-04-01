@@ -4,16 +4,31 @@ The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.action.report"
+            id="stock_inventory_valued_report_action">
+            <field name="name">Stock Inventory Valued</field>
+            <field name="model">product.product</field>
+            <field name="report_name">stock.inventory.valued.jreport</field>
+            <field name="report">stock_inventory_jreport/inventory_valued.jrxml</field>
+            <field name="extension">pdf</field>
+        </record>
+        <record model="ir.action.keyword"
+            id="stock_inventory_valued_report_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="stock_inventory_valued_report_action"/>
+        </record>
+
         <record model="ir.action.report" id="stock_inventory_report_action">
             <field name="name">Stock Inventory</field>
-            <field name="model">product.product</field>
+            <field name="model">stock.inventory</field>
             <field name="report_name">stock.inventory.jreport</field>
             <field name="report">stock_inventory_jreport/inventory.jrxml</field>
             <field name="extension">pdf</field>
         </record>
         <record model="ir.action.keyword" id="stock_inventory_report_keyword">
             <field name="keyword">form_print</field>
-            <field name="model">product.product,-1</field>
+            <field name="model">stock.inventory,-1</field>
             <field name="action" ref="stock_inventory_report_action"/>
         </record>
     </data>
