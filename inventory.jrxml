@@ -39,7 +39,7 @@
 	<field name="line_quantity" class="java.lang.Number">
 		<fieldDescription><![CDATA[lines/quantity]]></fieldDescription>
 	</field>
-	<sortField name="line_product"/>
+	<sortField name="line_product_code"/>
 	<sortField name="line_lot"/>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></variableExpression>

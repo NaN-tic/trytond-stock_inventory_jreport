@@ -65,6 +65,7 @@
 	<field name="lang-code" class="java.lang.String">
 		<fieldDescription><![CDATA[User/language/code]]></fieldDescription>
 	</field>
+	<sortField name="product-code"/>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></initialValueExpression>
