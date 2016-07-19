@@ -4,18 +4,12 @@
 # copyright notices and license terms.
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_depends
+from trytond.tests.test_tryton import ModuleTestCase
 
 
-class StockInventoryJreportTestCase(unittest.TestCase):
+class StockInventoryJreportTestCase(ModuleTestCase):
     'Test Stock Inventory Jreport module'
-
-    def setUp(self):
-        trytond.tests.test_tryton.install_module('stock_inventory_jreport')
-
-    def test0006depends(self):
-        'Test depends'
-        test_depends()
+    module = 'stock_inventory_jreport'
 
 
 def suite():
@@ -23,6 +17,3 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
         StockInventoryJreportTestCase))
     return suite
-
-if __name__ == '__main__':
-    unittest.TextTestRunner(verbosity=2).run(suite())
