@@ -24,7 +24,7 @@ msgstr "Pàgina"
 
 msgctxt "jasper:stock.inventory.jreport:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
 msgctxt "jasper:stock.inventory.jreport:"
 msgid "Quantity"
@@ -48,7 +48,7 @@ msgstr "Total inventari"
 
 msgctxt "jasper:stock.inventory.valued.jreport:"
 msgid "Product"
-msgstr "Productes"
+msgstr "Producte"
 
 msgctxt "jasper:stock.inventory.valued.jreport:"
 msgid "Quantity"
