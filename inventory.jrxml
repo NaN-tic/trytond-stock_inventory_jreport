@@ -41,6 +41,7 @@
 	<field name="line_quantity" class="java.lang.Number">
 		<fieldDescription><![CDATA[lines/quantity]]></fieldDescription>
 	</field>
+	<sortField name="location"/>
 	<sortField name="line_product_code"/>
 	<sortField name="line_lot"/>
 	<variable name="L" class="java.util.Locale">
