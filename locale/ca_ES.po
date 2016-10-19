@@ -30,6 +30,30 @@ msgctxt "jasper:stock.inventory.jreport:"
 msgid "Quantity"
 msgstr "Quantitat"
 
+msgctxt "jasper:stock.blind_count.jreport:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "jasper:stock.blind_count.jreport:"
+msgid "Inventory"
+msgstr "Inventari"
+
+msgctxt "jasper:stock.blind_count.jreport:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "jasper:stock.blind_count.jreport:"
+msgid "Page"
+msgstr "Pàgina"
+
+msgctxt "jasper:stock.blind_count.jreport:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "jasper:stock.blind_count.jreport:"
+msgid "Quantity"
+msgstr "Quantitat"
+
 msgctxt "jasper:stock.inventory.valued.jreport:"
 msgid "Code"
 msgstr "Codi"
@@ -57,6 +81,10 @@ msgstr "Quantitat"
 msgctxt "model:ir.action,name:stock_inventory_report_action"
 msgid "Stock Inventory"
 msgstr "Inventari d'estoc"
+
+msgctxt "model:ir.action,name:stock_blind_count_report_action"
+msgid "Blind Count"
+msgstr "Inventari cec"
 
 msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
 msgid "Stock Inventory Valued"

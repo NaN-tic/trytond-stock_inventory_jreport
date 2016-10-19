@@ -31,5 +31,18 @@ copyright notices and license terms. -->
             <field name="model">stock.inventory,-1</field>
             <field name="action" ref="stock_inventory_report_action"/>
         </record>
+
+        <record model="ir.action.report" id="stock_blind_count_report_action">
+            <field name="name">Blind Count</field>
+            <field name="model">stock.inventory</field>
+            <field name="report_name">stock.blind_count.jreport</field>
+            <field name="report">stock_inventory_jreport/blind_count.jrxml</field>
+            <field name="extension">pdf</field>
+        </record>
+        <record model="ir.action.keyword" id="stock_blind_count_report_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.inventory,-1</field>
+            <field name="action" ref="stock_blind_count_report_action"/>
+        </record>
     </data>
 </tryton>
