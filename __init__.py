@@ -3,15 +3,16 @@
 # copyright notices and license terms.
 from trytond.pool import Pool
 
-from .inventory import *
-from .location import *
+import inventory
+import location
 
 
 def register():
     Pool.register(
-        InventoryReport,
-        InventoryValuedReport,
+        inventory.InventoryReport,
+        inventory.BlindCountReport,
+        inventory.InventoryValuedReport,
         module='stock_inventory_jreport', type_='report')
     Pool.register(
-        ProductsByLocations,
+        location.ProductsByLocations,
         module='stock_inventory_jreport', type_='wizard')
