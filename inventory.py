@@ -6,12 +6,16 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
 
-__all__ = ['InventoryReport', 'InventoryValuedReport']
+__all__ = ['InventoryReport', 'BlindCountReport', 'InventoryValuedReport']
 __metaclass__ = PoolMeta
 
 
 class InventoryReport(JasperReport):
     __name__ = 'stock.inventory.jreport'
+
+
+class BlindCountReport(JasperReport):
+    __name__ = 'stock.blind_count.jreport'
 
 
 class InventoryValuedReport(JasperReport):
