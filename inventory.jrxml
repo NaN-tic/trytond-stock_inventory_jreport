@@ -53,7 +53,7 @@
 		<groupHeader>
 			<band height="50">
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="35" width="40" height="15" backcolor="#DCDCDC" uuid="967abf03-4a39-484e-9dd5-02c50991201c"/>
+					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="35" width="68" height="15" backcolor="#DCDCDC" uuid="967abf03-4a39-484e-9dd5-02c50991201c"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -67,7 +67,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Code")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="40" y="35" width="230" height="15" backcolor="#DCDCDC" uuid="aa111060-d85c-41d5-9123-5c8c20c81e38"/>
+					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="68" y="35" width="230" height="15" backcolor="#DCDCDC" uuid="aa111060-d85c-41d5-9123-5c8c20c81e38"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -81,7 +81,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Product")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="341" y="35" width="85" height="15" backcolor="#DCDCDC" uuid="134e7abc-a998-4f12-8876-3f1217c7f8b3"/>
+					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="371" y="35" width="85" height="15" backcolor="#DCDCDC" uuid="134e7abc-a998-4f12-8876-3f1217c7f8b3"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -95,7 +95,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Expected Quantity")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="270" y="35" width="71" height="15" backcolor="#DCDCDC" uuid="0b1a927e-216f-4f7c-856a-48f78da4b617"/>
+					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="298" y="35" width="73" height="15" backcolor="#DCDCDC" uuid="0b1a927e-216f-4f7c-856a-48f78da4b617"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -109,7 +109,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Lot")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="426" y="35" width="85" height="15" backcolor="#DCDCDC" uuid="d807ae97-3345-4343-af1c-4c705cfd03aa"/>
+					<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="456" y="35" width="55" height="15" backcolor="#DCDCDC" uuid="d807ae97-3345-4343-af1c-4c705cfd03aa"/>
 					<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 						<pen lineWidth="1.0"/>
 						<topPen lineWidth="1.0"/>
@@ -144,7 +144,7 @@
 	<detail>
 		<band height="15" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="40" height="15" uuid="1217f190-9742-47bb-a0a7-68f18566dbf0"/>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="68" height="15" uuid="1217f190-9742-47bb-a0a7-68f18566dbf0"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -156,7 +156,7 @@
 				<textFieldExpression><![CDATA[$F{line_product_code}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" x="40" y="0" width="230" height="15" uuid="b9a15e00-3a74-407a-85aa-64f37cafe6ce"/>
+				<reportElement stretchType="RelativeToBandHeight" x="68" y="0" width="230" height="15" uuid="b9a15e00-3a74-407a-85aa-64f37cafe6ce"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -167,7 +167,7 @@
 				<textFieldExpression><![CDATA[$F{line_product}]]></textFieldExpression>
 			</textField>
 			<textField pattern="0">
-				<reportElement stretchType="RelativeToBandHeight" x="341" y="0" width="85" height="15" uuid="74b35a9a-7e06-4812-891e-cda95bda34a6"/>
+				<reportElement stretchType="RelativeToBandHeight" x="371" y="0" width="85" height="15" uuid="74b35a9a-7e06-4812-891e-cda95bda34a6"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -179,7 +179,7 @@
 				<textFieldExpression><![CDATA[$F{line_expected_quantity} > 0 ? $F{line_expected_quantity} : 0]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToBandHeight" x="426" y="0" width="85" height="15" uuid="9d899026-ba3d-43b7-9380-5d7c089ccbb2"/>
+				<reportElement stretchType="RelativeToBandHeight" x="456" y="0" width="55" height="15" uuid="9d899026-ba3d-43b7-9380-5d7c089ccbb2"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -188,10 +188,10 @@
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{line_quantity} > 0 ? $F{line_quantity} : 0]]></textFieldExpression>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" x="270" y="0" width="71" height="15" uuid="0c9d0e49-e1e0-4c90-8a2f-635de9d5570b"/>
+				<reportElement stretchType="RelativeToBandHeight" x="298" y="0" width="73" height="15" uuid="0c9d0e49-e1e0-4c90-8a2f-635de9d5570b"/>
 				<box topPadding="2" leftPadding="2" bottomPadding="2" rightPadding="2">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
