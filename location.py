@@ -6,10 +6,10 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta, Pool
 
 __all__ = ['ProductsByLocations']
-__metaclass__ = PoolMeta
 
 
 class ProductsByLocations:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.products_by_locations'
 
     print_ = StateAction(
@@ -30,9 +30,14 @@ class ProductsByLocations:
         Location = pool.get('stock.location')
         Product = pool.get('product.product')
 
+        def get_location_name(location):
+            name = location.name.strip()
+            code = location.code.strip() if location.code else None
+            return ("%s [%s]" % name, code) if code else name
+
         context = {}
-        locations = Transaction().context.get('active_ids')
-        context['locations'] = locations
+        location_ids = Transaction().context.get('active_ids')
+        context['locations'] = location_ids
         context['stock_date_end'] = (self.start.forecast_date or
             datetime.date.max)
 
@@ -45,15 +50,14 @@ class ProductsByLocations:
             'context': context
             }
 
-        locations = Location.browse(locations)
-        if len(locations) == 1:
-            data['locations'] = ("%s [%s]" % (locations[0].name.strip(),
-                    locations[0].code.strip()))
-        elif len(locations) > 1:
-            ls = []
-            for l in Location.browse(locations):
-                ls.append("%s [%s]" % (l.name.strip(), l.code.strip()))
-            data['locations'] = "/ ".join(ls)
+        if location_ids:
+            locations = Location.browse(location_ids)
+            if len(locations) == 1:
+                data['locations'] = get_location_name(locations[0])
+            else:
+                data['locations'] = "/ ".join(
+                    get_location_name(location) for location in locations)
         else:
             data['locations'] = ""
+
         return action, data
