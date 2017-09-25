@@ -5,7 +5,17 @@ from trytond.wizard import StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta, Pool
 
-__all__ = ['ProductsByLocations']
+__all__ = ['Location', 'ProductsByLocations']
+
+
+class Location:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.location'
+
+    def report_title(self):
+        if self.code:
+            return ("%s [%s]" % (self.name.strip(), self.code.strip()))
+        return ("%s" % (self.name.strip()))
 
 
 class ProductsByLocations:
@@ -30,11 +40,6 @@ class ProductsByLocations:
         Location = pool.get('stock.location')
         Product = pool.get('product.product')
 
-        def get_location_name(location):
-            name = location.name.strip()
-            code = location.code.strip() if location.code else None
-            return ("%s [%s]" % name, code) if code else name
-
         context = {}
         location_ids = Transaction().context.get('active_ids')
         context['locations'] = location_ids
@@ -51,13 +56,8 @@ class ProductsByLocations:
             }
 
         if location_ids:
-            locations = Location.browse(location_ids)
-            if len(locations) == 1:
-                data['locations'] = get_location_name(locations[0])
-            else:
-                data['locations'] = "/ ".join(
-                    get_location_name(location) for location in locations)
+            data['locations'] = ' / '.join([
+                l.report_title() for l in Location.browse(location_ids)])
         else:
             data['locations'] = ""
-
         return action, data
