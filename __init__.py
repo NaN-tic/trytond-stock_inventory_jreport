@@ -2,12 +2,14 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 from trytond.pool import Pool
-
-import inventory
-import location
+from . import inventory
+from . import location
 
 
 def register():
+    Pool.register(
+        location.Location,
+        module='stock_inventory_jreport', type_='model')
     Pool.register(
         inventory.InventoryReport,
         inventory.BlindCountReport,
