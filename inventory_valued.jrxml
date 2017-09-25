@@ -8,6 +8,7 @@
 	</parameter>
 	<parameter name="TAXES_DS" class="java.lang.Object"/>
 	<parameter name="locations" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="stock_date_end" class="java.lang.String" isForPrompting="false"/>
 	<queryString language="xPath">
 		<![CDATA[]]>
 	</queryString>
@@ -141,7 +142,7 @@
 	<pageHeader>
 		<band height="100">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="10" y="65" width="535" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="b4c4f3c0-a273-45bc-aac8-f891e3173b3a"/>
+				<reportElement x="0" y="64" width="555" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="b4c4f3c0-a273-45bc-aac8-f891e3173b3a"/>
 				<textElement textAlignment="Left">
 					<font size="7"/>
 				</textElement>
@@ -154,7 +155,7 @@
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement x="10" y="78" width="535" height="15" isPrintWhenDetailOverflows="true" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
+				<reportElement x="4" y="79" width="540" height="15" isPrintWhenDetailOverflows="true" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="11" isBold="true"/>
 				</textElement>
@@ -164,7 +165,7 @@
         ": " + $P{locations}
     :
         ""
-)]]></textFieldExpression>
+) + " - "+ $P{stock_date_end}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="36" width="290" height="11" forecolor="#808080" uuid="1e1c932a-7243-47de-96be-11401a33578d"/>
@@ -255,18 +256,11 @@
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="38" width="480" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="2ab3736e-c838-4775-85c9-a5ea857f2d3f"/>
+				<reportElement x="0" y="38" width="555" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="2ab3736e-c838-4775-85c9-a5ea857f2d3f"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-footer}]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy HH.mm.ss">
-				<reportElement x="481" y="38" width="74" height="10" uuid="9be35e08-5762-43e2-846a-a3305f0fa13a"/>
-				<textElement verticalAlignment="Middle">
-					<font size="6"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
