@@ -4,11 +4,10 @@
 import datetime
 from trytond.modules.jasper_reports.jasper import JasperReport
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 
 
 __all__ = ['InventoryReport', 'BlindCountReport', 'InventoryValuedReport']
-__metaclass__ = PoolMeta
 
 
 class InventoryReport(JasperReport):
@@ -40,8 +39,9 @@ class InventoryValuedReport(JasperReport):
         if 'locations' in data:
             data['parameters']['locations'] = data['locations']
         elif context.get('locations'):
-            data['parameters']['locations'] = ' / '.join([
-                l.report_title() for l in Location.browse(context.get('locations'))])
+            locations = Location.browse(context.get('locations'))
+            data['parameters']['locations'] = ' / '.join(
+                [l.report_title() for l in locations])
         if 'context' in data:
             with Transaction().set_context(data['context']):
                 return super(InventoryValuedReport, cls).execute(ids, data)
