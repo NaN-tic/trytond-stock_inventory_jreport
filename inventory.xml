@@ -11,6 +11,7 @@ copyright notices and license terms. -->
             <field name="report_name">stock.inventory.valued.jreport</field>
             <field name="report">stock_inventory_jreport/inventory_valued.jrxml</field>
             <field name="extension">pdf</field>
+            <field name="template_extension">jrxml</field>
         </record>
         <record model="ir.action.keyword"
             id="stock_inventory_valued_report_keyword">
@@ -25,6 +26,7 @@ copyright notices and license terms. -->
             <field name="report_name">stock.inventory.jreport</field>
             <field name="report">stock_inventory_jreport/inventory.jrxml</field>
             <field name="extension">pdf</field>
+            <field name="template_extension">jrxml</field>
         </record>
         <record model="ir.action.keyword" id="stock_inventory_report_keyword">
             <field name="keyword">form_print</field>
@@ -38,6 +40,7 @@ copyright notices and license terms. -->
             <field name="report_name">stock.blind_count.jreport</field>
             <field name="report">stock_inventory_jreport/blind_count.jrxml</field>
             <field name="extension">pdf</field>
+            <field name="template_extension">jrxml</field>
         </record>
         <record model="ir.action.keyword" id="stock_blind_count_report_keyword">
             <field name="keyword">form_print</field>

@@ -2,79 +2,79 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Code"
 msgstr "Código"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Expected Quantity"
 msgstr "Cantidad estimada"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Inventory"
 msgstr "Inventario"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Lot"
 msgstr "Lote"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Page"
 msgstr "Página"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "jasper:stock.inventory.jreport:"
+msgctxt "report:stock.inventory.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "jasper:stock.blind_count.jreport:"
+msgctxt "report:stock.blind_count.jreport:"
 msgid "Code"
 msgstr "Código"
 
-msgctxt "jasper:stock.blind_count.jreport:"
+msgctxt "report:stock.blind_count.jreport:"
 msgid "Inventory"
 msgstr "Inventario"
 
-msgctxt "jasper:stock.blind_count.jreport:"
+msgctxt "report:stock.blind_count.jreport:"
 msgid "Lot"
 msgstr "Lote"
 
-msgctxt "jasper:stock.blind_count.jreport:"
+msgctxt "report:stock.blind_count.jreport:"
 msgid "Page"
 msgstr "Página"
 
-msgctxt "jasper:stock.blind_count.jreport:"
+msgctxt "report:stock.blind_count.jreport:"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "jasper:stock.blind_count.jreport:"
+msgctxt "report:stock.blind_count.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "jasper:stock.inventory.valued.jreport:"
+msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Code"
 msgstr "Código"
 
-msgctxt "jasper:stock.inventory.valued.jreport:"
+msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Cost Value"
 msgstr "Valor de coste"
 
-msgctxt "jasper:stock.inventory.valued.jreport:"
+msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Inventory"
 msgstr "Inventario"
 
-msgctxt "jasper:stock.inventory.valued.jreport:"
+msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Inventory Total"
 msgstr "Total inventario"
 
-msgctxt "jasper:stock.inventory.valued.jreport:"
+msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "jasper:stock.inventory.valued.jreport:"
+msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
