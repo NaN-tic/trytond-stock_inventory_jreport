@@ -15,6 +15,3 @@ def register():
         inventory.BlindCountReport,
         inventory.InventoryValuedReport,
         module='stock_inventory_jreport', type_='report')
-    Pool.register(
-        location.ProductsByLocations,
-        module='stock_inventory_jreport', type_='wizard')
