@@ -8,8 +8,7 @@ from trytond.pool import PoolMeta, Pool
 __all__ = ['Location']
 
 
-class Location:
-    __metaclass__ = PoolMeta
+class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
     def report_title(self):
