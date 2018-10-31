@@ -33,7 +33,7 @@ class ProductsByLocations:
         def get_location_name(location):
             name = location.name.strip()
             code = location.code.strip() if location.code else None
-            return ("%s [%s]" % name, code) if code else name
+            return ("%s [%s]" % (name, code)) if code else name
 
         context = {}
         location_ids = Transaction().context.get('active_ids')

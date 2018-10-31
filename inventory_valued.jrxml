@@ -48,7 +48,7 @@
 		<fieldDescription><![CDATA[User/company/currency-currency/symbol-symbol]]></fieldDescription>
 	</field>
 	<field name="company-vat_number" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/vat_number-vat_number]]></fieldDescription>
+		<fieldDescription><![CDATA[User/company/party-party/vat_code-vat_code]]></fieldDescription>
 	</field>
 	<field name="product-code" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/code-code]]></fieldDescription>
