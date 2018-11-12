@@ -90,6 +90,10 @@ msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
 msgid "Stock Inventory Valued"
 msgstr "Inventario de stock valorado"
 
+msgctxt "model:product.product:inventory_cost_value"
+msgid "Inventory Cost Value"
+msgstr "Valor de coste inventario"
+
 msgctxt "wizard_button:stock.products_by_locations,start,print_:"
 msgid "Print"
 msgstr "Imprimir"

@@ -8,7 +8,6 @@
 	</parameter>
 	<parameter name="TAXES_DS" class="java.lang.Object"/>
 	<parameter name="locations" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="stock_date_end" class="java.lang.String" isForPrompting="false"/>
 	<queryString language="xPath">
 		<![CDATA[]]>
 	</queryString>
@@ -48,7 +47,7 @@
 	<field name="company-currency-symbol" class="java.lang.String">
 		<fieldDescription><![CDATA[User/company/currency-currency/symbol-symbol]]></fieldDescription>
 	</field>
-	<field name="company-vat_code" class="java.lang.String">
+	<field name="company-vat_number" class="java.lang.String">
 		<fieldDescription><![CDATA[User/company/party-party/vat_code-vat_code]]></fieldDescription>
 	</field>
 	<field name="product-code" class="java.lang.String">
@@ -60,8 +59,8 @@
 	<field name="quantity" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/quantity-quantity]]></fieldDescription>
 	</field>
-	<field name="cost_value" class="java.lang.Number">
-		<fieldDescription><![CDATA[/data/record/cost_value-cost_value]]></fieldDescription>
+	<field name="inventory_cost_value" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/inventory_cost_value-inventory_cost_value]]></fieldDescription>
 	</field>
 	<field name="lang-code" class="java.lang.String">
 		<fieldDescription><![CDATA[User/language/code]]></fieldDescription>
@@ -71,8 +70,8 @@
 		<variableExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></initialValueExpression>
 	</variable>
-	<variable name="inventory_cost_value" class="java.lang.Number" calculation="Sum">
-		<variableExpression><![CDATA[$F{cost_value}]]></variableExpression>
+	<variable name="total_inventory_cost_value" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{inventory_cost_value}]]></variableExpression>
 	</variable>
 	<group name="Inventory" isStartNewPage="true" isResetPageNumber="true">
 		<groupHeader>
@@ -120,7 +119,7 @@
 					<textElement textAlignment="Right">
 						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{inventory_cost_value}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{total_inventory_cost_value}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="389" y="4" width="88" height="12" uuid="0a14639c-dd4c-453b-bd26-de91483a0e90"/>
@@ -142,7 +141,7 @@
 	<pageHeader>
 		<band height="100">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="64" width="555" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="b4c4f3c0-a273-45bc-aac8-f891e3173b3a"/>
+				<reportElement x="10" y="65" width="535" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="b4c4f3c0-a273-45bc-aac8-f891e3173b3a"/>
 				<textElement textAlignment="Left">
 					<font size="7"/>
 				</textElement>
@@ -155,7 +154,7 @@
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement x="4" y="79" width="540" height="15" isPrintWhenDetailOverflows="true" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
+				<reportElement x="10" y="78" width="535" height="15" isPrintWhenDetailOverflows="true" forecolor="#010101" uuid="94d8d51e-9453-4a7e-8496-1963b9478264"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font size="11" isBold="true"/>
 				</textElement>
@@ -165,14 +164,14 @@
         ": " + $P{locations}
     :
         ""
-) + " - "+ $P{stock_date_end}]]></textFieldExpression>
+)]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="0" y="36" width="290" height="11" forecolor="#808080" uuid="1e1c932a-7243-47de-96be-11401a33578d"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-vat_code}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{company-vat_number}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="1" y="11" width="290" height="11" forecolor="#808080" uuid="706ea89b-ffae-49d8-96d3-6bea702c2dc3"/>
@@ -232,7 +231,7 @@
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cost_value}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{inventory_cost_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="534" y="2" width="10" height="12" uuid="2d4aeea4-3da4-4674-84d5-5bacd3ca9124"/>
@@ -256,11 +255,18 @@
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="38" width="555" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="2ab3736e-c838-4775-85c9-a5ea857f2d3f"/>
+				<reportElement x="0" y="38" width="480" height="10" isRemoveLineWhenBlank="true" forecolor="#808080" uuid="2ab3736e-c838-4775-85c9-a5ea857f2d3f"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-footer}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="481" y="38" width="74" height="10" uuid="9be35e08-5762-43e2-846a-a3305f0fa13a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
