@@ -4,14 +4,27 @@ import datetime
 from trytond.wizard import StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta, Pool
+from trytond.model import fields
 
-__all__ = ['ProductsByLocations']
+__all__ = ['ProductsByLocationsStart', 'ProductsByLocations']
+
+
+class ProductsByLocationsStart:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.products_by_locations.start'
+    output_format = fields.Selection([
+            ('pdf', 'PDF'),
+            ('xls', 'XLS'),
+            ], 'Output Format', required=True)
+
+    @staticmethod
+    def default_output_format():
+        return 'pdf'
 
 
 class ProductsByLocations:
     __metaclass__ = PoolMeta
     __name__ = 'stock.products_by_locations'
-
     print_ = StateAction(
         'stock_inventory_jreport.stock_inventory_valued_report_action')
 
@@ -30,6 +43,8 @@ class ProductsByLocations:
         Location = pool.get('stock.location')
         Product = pool.get('product.product')
 
+        output_format = self.start.output_format or 'pdf'
+
         def get_location_name(location):
             name = location.name.strip()
             code = location.code.strip() if location.code else None
@@ -47,7 +62,8 @@ class ProductsByLocations:
 
         data = {
             'ids': [pbl.id for pbl in psbls],
-            'context': context
+            'context': context,
+            'output_format': output_format,
             }
 
         if location_ids:

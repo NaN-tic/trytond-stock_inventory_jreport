@@ -59,8 +59,8 @@
 	<field name="quantity" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/quantity-quantity]]></fieldDescription>
 	</field>
-	<field name="cost_value" class="java.lang.Number">
-		<fieldDescription><![CDATA[/data/record/cost_value-cost_value]]></fieldDescription>
+	<field name="inventory_cost_value" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/inventory_cost_value-inventory_cost_value]]></fieldDescription>
 	</field>
 	<field name="lang-code" class="java.lang.String">
 		<fieldDescription><![CDATA[User/language/code]]></fieldDescription>
@@ -70,8 +70,8 @@
 		<variableExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{lang-code} != null && $F{lang-code}.length() == 5 ? new Locale($F{lang-code}) : ( $F{lang-code} != null && $F{lang-code}.length() == 2 ? new Locale($F{lang-code}) : new Locale('en_US'))]]></initialValueExpression>
 	</variable>
-	<variable name="inventory_cost_value" class="java.lang.Number" calculation="Sum">
-		<variableExpression><![CDATA[$F{cost_value}]]></variableExpression>
+	<variable name="total_inventory_cost_value" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{inventory_cost_value}]]></variableExpression>
 	</variable>
 	<group name="Inventory" isStartNewPage="true" isResetPageNumber="true">
 		<groupHeader>
@@ -119,7 +119,7 @@
 					<textElement textAlignment="Right">
 						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{inventory_cost_value}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$V{total_inventory_cost_value}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="389" y="4" width="88" height="12" uuid="0a14639c-dd4c-453b-bd26-de91483a0e90"/>
@@ -231,7 +231,7 @@
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{cost_value}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{inventory_cost_value}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="534" y="2" width="10" height="12" uuid="2d4aeea4-3da4-4674-84d5-5bacd3ca9124"/>
