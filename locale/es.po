@@ -2,6 +2,46 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:product.product,inventory_cost_value:"
+msgid "Inventory Cost Value"
+msgstr "Valor de coste de inventario"
+
+msgctxt "model:ir.action,name:stock_blind_count_report_action"
+msgid "Blind Count"
+msgstr "Inventario ciego"
+
+msgctxt "model:ir.action,name:stock_inventory_report_action"
+msgid "Stock Inventory"
+msgstr "Inventario de stock"
+
+msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
+msgid "Stock Inventory Valued"
+msgstr "Inventario de stock valorado"
+
+msgctxt "report:stock.blind_count.jreport:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "report:stock.blind_count.jreport:"
+msgid "Inventory"
+msgstr "Inventario"
+
+msgctxt "report:stock.blind_count.jreport:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "report:stock.blind_count.jreport:"
+msgid "Page"
+msgstr "Página"
+
+msgctxt "report:stock.blind_count.jreport:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "report:stock.blind_count.jreport:"
+msgid "Quantity"
+msgstr "Cantidad"
+
 msgctxt "report:stock.inventory.jreport:"
 msgid "Code"
 msgstr "Código"
@@ -30,30 +70,6 @@ msgctxt "report:stock.inventory.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Code"
-msgstr "Código"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Inventory"
-msgstr "Inventario"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Lot"
-msgstr "Lote"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Page"
-msgstr "Página"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Quantity"
-msgstr "Cantidad"
-
 msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Code"
 msgstr "Código"
@@ -77,23 +93,3 @@ msgstr "Producto"
 msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
-
-msgctxt "model:ir.action,name:stock_inventory_report_action"
-msgid "Stock Inventory"
-msgstr "Inventario de stock"
-
-msgctxt "model:ir.action,name:stock_blind_count_report_action"
-msgid "Blind Count"
-msgstr "Inventario ciego"
-
-msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
-msgid "Stock Inventory Valued"
-msgstr "Inventario de stock valorado"
-
-msgctxt "model:product.product:inventory_cost_value"
-msgid "Inventory Cost Value"
-msgstr "Valor de cost inventari"
-
-msgctxt "wizard_button:stock.products_by_locations,start,print_:"
-msgid "Print"
-msgstr "Imprimir"
