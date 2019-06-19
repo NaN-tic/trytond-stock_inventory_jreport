@@ -31,7 +31,7 @@ class InventoryValuedReport(JasperReport):
         if locale:
             dformat = locale['date']
         else:
-            dformat = '%Y/%m%d/'
+            dformat = '%Y/%m/%d'
 
         if 'parameters' not in data:
             data['parameters'] = {}
