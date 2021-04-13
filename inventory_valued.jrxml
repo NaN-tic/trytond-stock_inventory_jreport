@@ -29,8 +29,8 @@
 	<field name="company-street" class="java.lang.String">
 		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/street-street]]></fieldDescription>
 	</field>
-	<field name="company-zip" class="java.lang.String">
-		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/zip-zip]]></fieldDescription>
+	<field name="company-postal_code" class="java.lang.String">
+		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/postal_code-postal_code]]></fieldDescription>
 	</field>
 	<field name="company-city" class="java.lang.String">
 		<fieldDescription><![CDATA[User/company/party-party/addresses-addresses/city-city]]></fieldDescription>
@@ -192,7 +192,7 @@
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-zip}+" "+$F{company-city}+" "+$F{company-country}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{company-postal_code}+" "+$F{company-city}+" "+$F{company-country}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="48" width="290" height="12" forecolor="#808080" uuid="558f5703-1dc1-4bf1-964f-51b3530a24e0"/>
