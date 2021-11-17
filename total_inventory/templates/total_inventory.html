@@ -1,0 +1,33 @@
+{% extends 'stock_inventory_jreport/templates/base.html' %}
+
+{% block style %}
+
+<style type="text/css">
+    @page {
+        size: A4;
+    }
+    @media print {
+      #header-details {
+        display: none;
+      }
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+    {{ _('Total Inventory')}}
+{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {% if data['parameters']['records_found'] %}
+                    {{ show_lines(data['records']) }}
+                {% else %}
+                    <strong>{{ _('No records found')}}</strong>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

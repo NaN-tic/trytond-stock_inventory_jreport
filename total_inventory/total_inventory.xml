@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<tryton>
+    <data>
+        <!-- templates -->
+        <record model="html.template" id="total_inventory_header_template">
+            <field name="name">Header</field>
+            <field name="type">header</field>
+            <field name="sequence" eval="99"/>
+            <field name="filename">stock_inventory_jreport/total_inventory/templates/header_macro.html</field>
+        </record>
+
+        <record model="html.template" id="total_inventory_html_template">
+            <field name="name">Total Inventory</field>
+            <field name="type">base</field>
+            <field name="sequence" eval="99"/>
+            <field name="filename">stock_inventory_jreport/total_inventory/templates/total_inventory.html</field>
+        </record>
+        <record model="ir.action.report" id="report_total_inventory">
+            <field name="name">Total Inventory</field>
+            <field name="report_name">stock_inventory_jreport.total_inventory</field>
+            <field name="html_template" ref="total_inventory_html_template"/>
+            <field name="html_header_template" ref="total_inventory_header_template"/>
+            <field name="extension">pdf</field>
+            <field name="template_extension">jinja</field>
+        </record>
+
+        <record model="html.template.signature" id="total_inventory_show_lines_macro_signature">
+            <field name="name">show_lines(records)</field>
+        </record>
+        <record model="html.template" id="total_inventory_show_lines_macro_html">
+            <field name="name">Lines</field>
+            <field name="type">macro</field>
+            <field name="sequence" eval="99"/>
+            <field name="filename">stock_inventory_jreport/total_inventory/templates/detail_lines.html</field>
+            <field name="implements" ref="stock_inventory_jreport.total_inventory_show_lines_macro_signature"/>
+        </record>
+        <record model="html.report.template" id="report_total_inventory_template_show_lines_html">
+            <field name="report" ref="report_total_inventory"/>
+            <field name="signature" ref="stock_inventory_jreport.total_inventory_show_lines_macro_signature"/>
+        </record>
+
+        <!-- wizard -->
+        <record model="ir.ui.view" id="print_total_inventory_start_view_form">
+            <field name="model">stock.inventory.print_total_inventory.start</field>
+            <field name="type">form</field>
+            <field name="name">print_total_inventory_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_print_total_inventory">
+            <field name="name">Total Inventory</field>
+            <field name="wiz_name">stock.inventory.print_total_inventory</field>
+        </record>
+
+        <!-- menu wizard -->
+        <menuitem id="menu_print_total_inventory" name="Total Inventory"
+            parent="stock.menu_inventory_form" action="wizard_print_total_inventory"
+            icon="tryton-print"/>
+    </data>
+</tryton>
