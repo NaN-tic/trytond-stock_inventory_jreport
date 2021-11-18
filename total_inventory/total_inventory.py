@@ -90,8 +90,12 @@ class TotalInventoryReport(HTMLReport):
         Product = pool.get('product.product')
 
         locations = {}
-        for location in Location.search([('id', 'in', data['locations'])],
+        locations_ids = []
+
+        for location in Location.search(
+                [('parent', 'child_of', data['locations'])],
                 order=[('name', 'ASC')]):
+            locations_ids.append(location.id)
             locations[location.id] = location
 
         if data['products']:
@@ -115,33 +119,34 @@ class TotalInventoryReport(HTMLReport):
         with Transaction().set_context(stock_date_end=stock_date_end):
             # We need to go one by one location to mantain the order in the
             # dictionary
-            for location in data['locations']:
-                if data['stock_lot_installed']:
-                    pbl = list(Product.products_by_location([location],
-                        products_ids, grouping=('product', 'lot')).items())
-                else:
-                    pbl = Product.products_by_location(
-                        [location], products_ids).items()
+            if data['stock_lot_installed']:
+                pbl = list(Product.products_by_location(locations_ids,
+                    products_ids, grouping=('product', 'lot')).items())
+            else:
+                pbl = Product.products_by_location(locations_ids,
+                    products_ids).items()
 
-                for key, value in pbl:
-                    if value > 0 and key[1] in products_ids:
-                        record = {}
-                        record['quantity'] = value
-                        record['location'] = locations[key[0]]
-                        record['product'] = products[key[1]]
+            for key, value in pbl:
+                if value > 0 and key[1] in products_ids:
+                    record = {}
+                    record['quantity'] = value
+                    record['location'] = locations[key[0]]
+                    record['product'] = products[key[1]]
 
+                    records.setdefault(key[1], {
+                        'quantity': value,
+                        'location': locations[key[0]],
+                    })
 
-                        records.setdefault(key[1], {
-                            'quantity': value,
-                            'location': locations[key[0]],
-                        })
+                    records[key[1]]['product'] = products[key[1]]
 
-                        records[key[1]]['product'] = products[key[1]]
-
-                        if data['stock_lot_installed']:
-                            # TODO: use lot id or other field?
+                    if data['stock_lot_installed']:
+                        # TODO: use lot id or other field?
+                        if key[2]:
                             record['lot'] = key[2]
-                        records_test.append(record)
+                        else:
+                            record['lot'] = ''
+                    records_test.append(record)
 
         parameters = {}
         parameters['sort_atribute'] = 'location.name'
