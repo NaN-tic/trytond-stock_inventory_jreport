@@ -116,8 +116,7 @@ class TotalInventoryReport(HTMLReport):
 
         records = {}
         records_test = []
-        with Transaction().set_context(stock_date_end=stock_date_end,
-                with_childs=True):
+        with Transaction().set_context(stock_date_end=stock_date_end):
             if data['stock_lot_installed']:
                 pbl = list(Product.products_by_location(locations_ids,
                     products_ids, grouping=('product', 'lot')).items())
