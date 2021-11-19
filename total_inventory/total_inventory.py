@@ -92,9 +92,9 @@ class TotalInventoryReport(HTMLReport):
         locations = {}
         locations_ids = []
 
-        for location in Location.search(
-                [('parent', 'child_of', data['locations'])],
-                order=[('name', 'ASC')]):
+        for location in Location.search([
+                ('parent', 'child_of', data['locations']),
+                ('type', '=', 'storage')], order=[('name', 'ASC')]):
             locations_ids.append(location.id)
             locations[location.id] = location
 
@@ -116,9 +116,8 @@ class TotalInventoryReport(HTMLReport):
 
         records = {}
         records_test = []
-        with Transaction().set_context(stock_date_end=stock_date_end):
-            # We need to go one by one location to mantain the order in the
-            # dictionary
+        with Transaction().set_context(stock_date_end=stock_date_end,
+                with_childs=True):
             if data['stock_lot_installed']:
                 pbl = list(Product.products_by_location(locations_ids,
                     products_ids, grouping=('product', 'lot')).items())
