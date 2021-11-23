@@ -1,0 +1,48 @@
+# Catalan translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-11-17 14:51+0100\n"
+"PO-Revision-Date: 2021-11-17 14:51+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ca\n"
+"Language-Team: ca <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: templates/detail_lines.html:4
+msgid "Location"
+msgstr "Ubicació"
+
+#: templates/detail_lines.html:5
+msgid "Product Code"
+msgstr "Codi de Producte"
+
+#: templates/detail_lines.html:6
+msgid "Product Name"
+msgstr "Nom de Producte"
+
+#: templates/detail_lines.html:7
+msgid "Lot"
+msgstr "Lot"
+
+#: templates/detail_lines.html:8
+msgid "Quantity"
+msgstr "Quantitat"
+
+#: templates/total_inventory.html:18
+msgid "Total Inventory"
+msgstr "Total Inventaris"
+
+#: templates/total_inventory.html:28
+msgid "No records found"
+msgstr "No s'han trobat registres"
+
