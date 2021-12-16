@@ -171,6 +171,7 @@ class TotalInventoryReport(HTMLReport):
         # the report will not be generated
         if len(records) == 0:
             parameters['records_found'] = False
+            records = {}
             records['no_records'] = ''
 
         with Transaction().set_context(**context):
