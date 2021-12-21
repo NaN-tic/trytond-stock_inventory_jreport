@@ -24,11 +24,11 @@ msgstr "Ubicació"
 
 #: templates/detail_lines.html:5
 msgid "Product Code"
-msgstr "Codi de Producte"
+msgstr "Codi de producte"
 
 #: templates/detail_lines.html:6
 msgid "Product Name"
-msgstr "Nom de Producte"
+msgstr "Nom de producte"
 
 #: templates/detail_lines.html:7
 msgid "Lot"
@@ -40,9 +40,8 @@ msgstr "Quantitat"
 
 #: templates/total_inventory.html:18
 msgid "Total Inventory"
-msgstr "Total Inventaris"
+msgstr "Total inventaris"
 
 #: templates/total_inventory.html:28
 msgid "No records found"
 msgstr "No s'han trobat registres"
-
