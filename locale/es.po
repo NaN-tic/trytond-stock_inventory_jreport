@@ -32,7 +32,7 @@ msgstr "Productos"
 
 msgctxt "model:ir.action,name:report_total_inventory"
 msgid "Total Inventory"
-msgstr "Inventario Total"
+msgstr "Inventario total"
 
 msgctxt "model:ir.action,name:stock_blind_count_report_action"
 msgid "Blind Count"
@@ -48,15 +48,15 @@ msgstr "Inventario de stock valorado"
 
 msgctxt "model:ir.action,name:wizard_print_total_inventory"
 msgid "Total Inventory"
-msgstr "Inventario Total"
+msgstr "Inventario total"
 
 msgctxt "model:ir.ui.menu,name:menu_print_total_inventory"
 msgid "Total Inventory"
-msgstr "Inventario Total"
+msgstr "Inventario total"
 
 msgctxt "model:stock.inventory.print_total_inventory.start,name:"
 msgid "Print Total Inventory"
-msgstr "Imprimir Inventario Total"
+msgstr "Imprimir inventario total"
 
 msgctxt "report:stock.blind_count.jreport:"
 msgid "Code"
@@ -147,16 +147,12 @@ msgid "PDF"
 msgstr "PDF"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
-msgid "Location Name"
-msgstr "Nombre Ubicación"
+msgid "Location"
+msgstr "Ubicación"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
-msgid "Product Code"
-msgstr "Código de producto"
-
-msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
-msgid "Product Name"
-msgstr "Nombre producto"
+msgid "Product"
+msgstr "Producto"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,output_format:"
 msgid "Excel"

@@ -11,7 +11,7 @@
     {% for k in data['records']|sort(attribute=data['parameters']['sort_atribute']) %}
     <tr>
         <td>{{ k['location'].name }}</td>
-        <td>{{ k['product'].code }}</td>
+        <td>{{ k['product'].code or '' }}</td>
         <td>{{ k['product'].name }}</td>
         {% if data['parameters']['has_lot'] %}<td>{{ k['lot'] and k['lot'].rec_name }}</td>{% endif %}
         <td>{{ k['quantity'] }}</td>

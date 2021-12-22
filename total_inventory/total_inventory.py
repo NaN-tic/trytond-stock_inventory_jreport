@@ -27,9 +27,8 @@ class PrintTotalInventoryStart(ModelView):
         ('html', "HTML")],
         "Format", required=True)
     order = fields.Selection([
-        ('location_name', 'Location Name'),
-        ('product_name', 'Product Name'),
-        ('product_code', 'Product Code'),
+        ('location', 'Location'),
+        ('product', 'Product'),
         ], "Order", required=True)
 
 
@@ -47,7 +46,7 @@ class PrintTotalInventory(Wizard):
     def default_start(self, fields):
         return {
             'output_format': 'pdf',
-            'order': 'location_name',
+            'order': 'location',
         }
 
     def do_print_(self, action):
@@ -136,11 +135,10 @@ class TotalInventoryReport(HTMLReport):
         parameters['company'] = Company(company_id) if company_id else ''
         parameters['now'] = format_datetime(datetime.now(), format='short',
             locale=Transaction().language or 'en')
-        parameters['sort_atribute'] = 'location.name'
-        if data['order'] == 'product_name':
-            parameters['sort_atribute'] = 'product.name'
-        elif data['order'] == 'product_code':
-            parameters['sort_atribute'] = 'product.code'
+        if data['order'] == 'product':
+            parameters['sort_atribute'] = 'product.rec_name'
+        else:
+            parameters['sort_atribute'] = 'location.rec_name'
         parameters['has_lot'] = True if Lot else False
 
         return records, parameters
