@@ -23,12 +23,8 @@ msgid "Location"
 msgstr "Ubicación"
 
 #: templates/detail_lines.html:5
-msgid "Product Code"
-msgstr "Código de producto"
-
-#: templates/detail_lines.html:6
-msgid "Product Name"
-msgstr "Nombre de producto"
+msgid "Product"
+msgstr "Producto"
 
 #: templates/detail_lines.html:7
 msgid "Lot"
