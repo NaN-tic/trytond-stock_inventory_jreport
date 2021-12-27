@@ -15,17 +15,18 @@
 {% endblock %}
 
 {% block title %}
-    {{ _('Total Inventory')}}
+    {{ _('Total Inventory') }} - {{ data['parameters']['company'].rec_name }} - {{ data['parameters']['now'] }}
 {% endblock %}
 
 {% block main %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                {% if data['parameters']['records_found'] %}
+                <h2>{{ _('Total Inventory') }} - {{ data['parameters']['company'].rec_name }} - {{ data['parameters']['now'] }}</h2>
+                {% if data['records'] %}
                     {{ show_lines(data['records']) }}
                 {% else %}
-                    <strong>{{ _('No records found')}}</strong>
+                    <strong>{{ _('No records found') }}</strong>
                 {% endif %}
             </div>
         </div>
