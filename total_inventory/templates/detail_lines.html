@@ -1,19 +1,17 @@
 <table>
     <thead>
         <tr>
-            <th>{{ _('Location')}}</th>
-            <th>{{ _('Product Code')}}</th>
-            <th>{{ _('Product Name')}}</th>
-            {% if data['parameters']['stock_lot_installed'] %}<th>{{ _('Lot')}}</th>{% endif %}
-            <th>{{ _('Quantity')}}</th>
+            <th>{{ _('Location') }}</th>
+            <th>{{ _('Product') }}</th>
+            {% if data['parameters']['has_lot'] %}<th>{{ _('Lot') }}</th>{% endif %}
+            <th>{{ _('Quantity') }}</th>
         </tr>
     </thead>
     {% for k in data['records']|sort(attribute=data['parameters']['sort_atribute']) %}
     <tr>
         <td>{{ k['location'].name }}</td>
-        <td>{{ k['product'].code }}</td>
-        <td>{{ k['product'].name }}</td>
-        {% if data['parameters']['stock_lot_installed'] %}<td>{{ k['lot'] }}</td>{% endif %}
+        <td>{{ k['product'].rec_name }}</td>
+        {% if data['parameters']['has_lot'] %}<td>{{ k['lot'] and k['lot'].rec_name }}</td>{% endif %}
         <td>{{ k['quantity'] }}</td>
     </tr>
     {% endfor %}

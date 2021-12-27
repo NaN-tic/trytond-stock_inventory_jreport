@@ -32,7 +32,7 @@ msgstr "Productes"
 
 msgctxt "model:ir.action,name:report_total_inventory"
 msgid "Total Inventory"
-msgstr "Total Inventari"
+msgstr "Total inventari"
 
 msgctxt "model:ir.action,name:stock_blind_count_report_action"
 msgid "Blind Count"
@@ -48,15 +48,15 @@ msgstr "Inventari d'estoc valorat"
 
 msgctxt "model:ir.action,name:wizard_print_total_inventory"
 msgid "Total Inventory"
-msgstr "Total Inventari"
+msgstr "Total inventari"
 
 msgctxt "model:ir.ui.menu,name:menu_print_total_inventory"
 msgid "Total Inventory"
-msgstr "Total Inventari"
+msgstr "Total inventari"
 
 msgctxt "model:stock.inventory.print_total_inventory.start,name:"
 msgid "Print Total Inventory"
-msgstr "Imprimir Total Inventari"
+msgstr "Imprimir total inventari"
 
 msgctxt "report:stock.blind_count.jreport:"
 msgid "Code"
@@ -147,16 +147,12 @@ msgid "PDF"
 msgstr "PDF"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
-msgid "Location Name"
-msgstr "Nom Ubicació"
+msgid "Location"
+msgstr "Ubicació"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
-msgid "Product Code"
-msgstr "Codi Producte"
-
-msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
-msgid "Product Name"
-msgstr "Nom Producte"
+msgid "Product"
+msgstr "Producte"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,output_format:"
 msgid "Excel"
