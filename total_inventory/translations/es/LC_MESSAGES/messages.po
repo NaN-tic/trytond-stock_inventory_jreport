@@ -23,12 +23,8 @@ msgid "Location"
 msgstr "Ubicación"
 
 #: templates/detail_lines.html:5
-msgid "Product Code"
-msgstr "Código de Producto"
-
-#: templates/detail_lines.html:6
-msgid "Product Name"
-msgstr "Nombre de Producto"
+msgid "Product"
+msgstr "Producto"
 
 #: templates/detail_lines.html:7
 msgid "Lot"
@@ -40,9 +36,8 @@ msgstr "Cantidad"
 
 #: templates/total_inventory.html:18
 msgid "Total Inventory"
-msgstr "Total Inventarios"
+msgstr "Total inventarios"
 
 #: templates/total_inventory.html:28
 msgid "No records found"
 msgstr "No se han encontrado registros"
-

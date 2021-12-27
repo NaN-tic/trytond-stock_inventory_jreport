@@ -1,13 +1,15 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 import os
+from datetime import datetime
+from babel.dates import format_datetime
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.rpc import RPC
-
 from trytond.modules.html_report.html_report import HTMLReport
+
 
 class PrintTotalInventoryStart(ModelView):
     'Print Total Inventory'
@@ -25,10 +27,10 @@ class PrintTotalInventoryStart(ModelView):
         ('html', "HTML")],
         "Format", required=True)
     order = fields.Selection([
-        ('location_name', 'Location Name'),
-        ('product_name', 'Product Name'),
-        ('product_code', 'Product Code'),
+        ('location', 'Location'),
+        ('product', 'Product'),
         ], "Order", required=True)
+
 
 class PrintTotalInventory(Wizard):
     'Print Total Inventory'
@@ -44,26 +46,14 @@ class PrintTotalInventory(Wizard):
     def default_start(self, fields):
         return {
             'output_format': 'pdf',
-            'order': 'location_name',
+            'order': 'location',
         }
 
     def do_print_(self, action):
-        pool = Pool()
-
-        stock_lot_installed = False
-        try:
-            Lot = pool.get('stock.lot')
-        except KeyError:
-            Lot = None
-
-        if Lot:
-            stock_lot_installed = True
-
         data = {
             'date': self.start.date,
             'products': [x.id for x in self.start.products],
             'locations': [x.id for x in self.start.locations],
-            'stock_lot_installed': stock_lot_installed,
             'output_format': self.start.output_format,
             'order': self.start.order,
             }
@@ -85,9 +75,15 @@ class TotalInventoryReport(HTMLReport):
     @classmethod
     def prepare(cls, data):
         pool = Pool()
+        Company = pool.get('company.company')
         Location = pool.get('stock.location')
         Date = pool.get('ir.date')
         Product = pool.get('product.product')
+
+        try:
+            Lot = pool.get('stock.lot')
+        except KeyError:
+            Lot = None
 
         locations = {}
         locations_ids = []
@@ -114,48 +110,35 @@ class TotalInventoryReport(HTMLReport):
 
         products_ids = list(products.keys())
 
-        records = {}
-        records_test = []
+        records = []
         with Transaction().set_context(stock_date_end=stock_date_end):
-            if data['stock_lot_installed']:
-                pbl = list(Product.products_by_location(locations_ids,
-                    products_ids, grouping=('product', 'lot')).items())
-            else:
-                pbl = Product.products_by_location(locations_ids,
-                    products_ids).items()
+            grouping = ('product', 'lot') if Lot else ('product',)
+            pbl = Product.products_by_location(locations_ids,
+                products_ids, grouping)
 
-            for key, value in pbl:
+            for key, value in pbl.items():
                 if value > 0 and key[1] in products_ids:
                     record = {}
                     record['quantity'] = value
                     record['location'] = locations[key[0]]
                     record['product'] = products[key[1]]
+                    if Lot:
+                        record['lot'] = Lot(key[2]) if key[2] else None
+                    records.append(record)
 
-                    records.setdefault(key[1], {
-                        'quantity': value,
-                        'location': locations[key[0]],
-                    })
-
-                    records[key[1]]['product'] = products[key[1]]
-
-                    if data['stock_lot_installed']:
-                        # TODO: use lot id or other field?
-                        if key[2]:
-                            record['lot'] = key[2]
-                        else:
-                            record['lot'] = ''
-                    records_test.append(record)
+        company_id = Transaction().context.get('company')
 
         parameters = {}
-        parameters['sort_atribute'] = 'location.name'
-        if data['order'] == 'product_name':
-            parameters['sort_atribute'] = 'product.name'
-        elif data['order'] == 'product_code':
-            parameters['sort_atribute'] = 'product.code'
+        parameters['company'] = Company(company_id) if company_id else ''
+        parameters['now'] = format_datetime(datetime.now(), format='short',
+            locale=Transaction().language or 'en')
+        if data['order'] == 'product':
+            parameters['sort_atribute'] = 'product.rec_name'
+        else:
+            parameters['sort_atribute'] = 'location.rec_name'
+        parameters['has_lot'] = True if Lot else False
 
-        parameters['stock_lot_installed'] = data['stock_lot_installed']
-        parameters['records_found'] = True
-        return records_test, parameters
+        return records, parameters
 
     @classmethod
     def execute(cls, ids, data):
@@ -166,13 +149,6 @@ class TotalInventoryReport(HTMLReport):
         context['report_lang'] = Transaction().language
         context['report_translations'] = os.path.join(
                 os.path.dirname(__file__), 'translations')
-
-        # We need the records dictionary to have at leat one record, otherwise
-        # the report will not be generated
-        if len(records) == 0:
-            parameters['records_found'] = False
-            records = {}
-            records['no_records'] = ''
 
         with Transaction().set_context(**context):
             name = 'stock_inventory_jreport.total_inventory'
