@@ -112,14 +112,11 @@ class TotalInventoryReport(HTMLReport):
 
         records = []
         with Transaction().set_context(stock_date_end=stock_date_end):
-            if Lot:
-                pbl = list(Product.products_by_location(locations_ids,
-                    products_ids, grouping=('product', 'lot')).items())
-            else:
-                pbl = Product.products_by_location(locations_ids,
-                    products_ids).items()
+            grouping = ('product', 'lot') if Lot else ('product',)
+            pbl = Product.products_by_location(locations_ids,
+                products_ids, grouping)
 
-            for key, value in pbl:
+            for key, value in pbl.items():
                 if value > 0 and key[1] in products_ids:
                     record = {}
                     record['quantity'] = value
