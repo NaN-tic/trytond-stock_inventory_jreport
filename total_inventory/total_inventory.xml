@@ -13,9 +13,10 @@ copyright notices and license terms. -->
 
         <record model="html.template" id="total_inventory_html_template">
             <field name="name">Total Inventory</field>
-            <field name="type">base</field>
+            <field name="type">extension</field>
             <field name="sequence" eval="99"/>
             <field name="filename">stock_inventory_jreport/total_inventory/templates/total_inventory.html</field>
+            <field name="parent" ref="html_report.base_template"/>
         </record>
         <record model="ir.action.report" id="report_total_inventory">
             <field name="name">Total Inventory</field>
@@ -39,6 +40,11 @@ copyright notices and license terms. -->
         <record model="html.report.template" id="report_total_inventory_template_show_lines_html">
             <field name="report" ref="report_total_inventory"/>
             <field name="signature" ref="stock_inventory_jreport.total_inventory_show_lines_macro_signature"/>
+        </record>
+
+        <record model="html.report.template" id="report_total_inventory_css_company_id">
+            <field name="report" ref="report_total_inventory"/>
+            <field name="signature" ref="html_report.css_macro_signature"/>
         </record>
 
         <!-- wizard -->
