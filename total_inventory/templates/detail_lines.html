@@ -8,11 +8,12 @@
         </tr>
     </thead>
     {% for k in data['records']|sort(attribute=data['parameters']['sort_atribute']) %}
+    {% set product = k['product'] %}
     <tr>
         <td>{{ k['location'].name }}</td>
-        <td>{{ k['product'].rec_name }}</td>
+        <td>{{ product.rec_name }}</td>
         {% if data['parameters']['has_lot'] %}<td>{{ k['lot'] and k['lot'].rec_name }}</td>{% endif %}
-        <td>{{ k['quantity'] }}</td>
+        <td>{{ k['quantity']|render(digits=product.default_uom.digits) }}</td>
     </tr>
     {% endfor %}
 </table>
