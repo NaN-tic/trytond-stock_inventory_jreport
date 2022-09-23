@@ -10,10 +10,6 @@ msgctxt "field:stock.inventory.print_total_inventory.start,date:"
 msgid "Date"
 msgstr "Fecha"
 
-msgctxt "field:stock.inventory.print_total_inventory.start,format:"
-msgid "Format"
-msgstr "Formato"
-
 msgctxt "field:stock.inventory.print_total_inventory.start,locations:"
 msgid "Locations"
 msgstr "Ubicaciones"
@@ -134,18 +130,6 @@ msgctxt "report:stock.inventory.valued.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "selection:stock.inventory.print_total_inventory.start,format:"
-msgid "Excel"
-msgstr "Excel"
-
-msgctxt "selection:stock.inventory.print_total_inventory.start,format:"
-msgid "HTML"
-msgstr "HTML"
-
-msgctxt "selection:stock.inventory.print_total_inventory.start,format:"
-msgid "PDF"
-msgstr "PDF"
-
 msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
 msgid "Location"
 msgstr "Ubicación"
@@ -168,12 +152,8 @@ msgstr "PDF"
 
 msgctxt "wizard_button:stock.inventory.print_total_inventory,start,end:"
 msgid "Cancel"
-msgstr "Cancel·lar"
+msgstr "Cancelar"
 
 msgctxt "wizard_button:stock.inventory.print_total_inventory,start,print_:"
-msgid "Print"
-msgstr "Imprimir"
-
-msgctxt "wizard_button:stock.products_by_locations,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
