@@ -31,6 +31,16 @@ class PrintTotalInventoryStart(ModelView):
         ('product', 'Product'),
         ], "Order", required=True)
 
+    @classmethod
+    def __setup__(cls):
+        Move = Pool().get('stock.move')
+
+        super(PrintTotalInventoryStart, cls).__setup__()
+
+        cls.products.domain = [
+            ('type', 'in', Move.get_product_types()),
+            ]
+
 
 class PrintTotalInventory(Wizard):
     'Print Total Inventory'
