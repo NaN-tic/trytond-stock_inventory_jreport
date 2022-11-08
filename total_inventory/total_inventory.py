@@ -17,7 +17,10 @@ class PrintTotalInventoryStart(ModelView):
 
     date = fields.Date("Date")
     products = fields.Many2Many(
-        'product.product', None, None, "Products")
+        'product.product', None, None, "Products",
+        domain=[
+            ('type', '=', 'goods'),
+        ])
     locations = fields.Many2Many(
         'stock.location', None, None, "Locations",
         domain=[('type', '=', 'warehouse')], required=True)
@@ -104,13 +107,12 @@ class TotalInventoryReport(HTMLReport):
             locations_ids.append(location.id)
             locations[location.id] = location
 
+        domain = [('type', '=', 'goods')]
         if data['products']:
-            query = [('id', 'in', data['products'])]
-        else:
-            query = []
+            domain.append(('id', 'in', data['products']))
 
         products = {}
-        for product in Product.search(query):
+        for product in Product.search(domain):
             products[product.id] = product
 
         if data['date']:
