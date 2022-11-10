@@ -12,7 +12,7 @@
     <tr>
         <td>{{ k['location'].name }}</td>
         <td>{{ product.rec_name }}</td>
-        {% if data['parameters']['has_lot'] %}<td>{{ k['lot'] and k['lot'].rec_name }}</td>{% endif %}
+        {% if data['parameters']['has_lot'] %}<td>{{ k['lot'] and k['lot'].rec_name or '' }}</td>{% endif %}
         <td>{{ k['quantity']|render(digits=product.default_uom.digits) }}</td>
     </tr>
     {% endfor %}
