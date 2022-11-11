@@ -8,6 +8,7 @@ from trytond.transaction import Transaction
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.rpc import RPC
+from trytond.tools import grouped_slice
 from trytond.modules.html_report.html_report import HTMLReport
 
 
@@ -98,45 +99,47 @@ class TotalInventoryReport(HTMLReport):
         except KeyError:
             Lot = None
 
-        locations = {}
-        locations_ids = []
-
-        for location in Location.search([
+        locations = Location.search([
                 ('parent', 'child_of', data['locations']),
-                ('type', '=', 'storage')], order=[('name', 'ASC')]):
-            locations_ids.append(location.id)
-            locations[location.id] = location
+                ('type', '=', 'storage'),
+                ], order=[('name', 'ASC')])
+        location_ids = [l.id for l in locations]
+        locations_by_id = dict((l.id, l) for l in locations)
 
         domain = [('type', '=', 'goods')]
         if data['products']:
             domain.append(('id', 'in', data['products']))
 
-        products = {}
-        for product in Product.search(domain):
-            products[product.id] = product
+        products = Product.search(domain)
+        products_by_id = dict((p.id, p) for p in products)
 
         if data['date']:
             stock_date_end = data['date']
         else:
             stock_date_end = Date.today()
 
-        products_ids = list(products.keys())
-
         records = []
         with Transaction().set_context(stock_date_end=stock_date_end):
             grouping = ('product', 'lot') if Lot else ('product',)
-            pbl = Product.products_by_location(locations_ids,
-                products_ids, grouping)
+            for sub_products in grouped_slice(products):
+                product_ids = [x.id for x in sub_products]
+                pbl = Product.products_by_location(location_ids,
+                    with_childs=True,
+                    grouping=grouping,
+                    grouping_filter=(product_ids,))
 
-            for key, value in pbl.items():
-                if value > 0 and key[1] in products_ids:
-                    record = {}
-                    record['quantity'] = value
-                    record['location'] = locations[key[0]]
-                    record['product'] = products[key[1]]
-                    if Lot:
-                        record['lot'] = Lot(key[2]) if key[2] else None
-                    records.append(record)
+                for key, qty in pbl.items():
+                    if qty > 0:
+                        location_id = key[0]
+                        product_id = key[1]
+
+                        record = {}
+                        record['quantity'] = qty
+                        record['location'] = locations_by_id[location_id]
+                        record['product'] = products_by_id[product_id]
+                        if Lot:
+                            record['lot'] = Lot(key[2]) if key[2] else None
+                        records.append(record)
 
         company_id = Transaction().context.get('company')
 
