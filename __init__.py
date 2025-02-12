@@ -17,6 +17,7 @@ def register():
         inventory.InventoryReport,
         inventory.BlindCountReport,
         inventory.InventoryValuedReport,
+        inventory.LocationInventoryValuedReport,
         module=module, type_='report')
 
     total_inventory.register(module)

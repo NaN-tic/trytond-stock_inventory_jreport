@@ -42,6 +42,10 @@ msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
 msgid "Stock Inventory Valued"
 msgstr "Inventari d'estoc valorat"
 
+msgctxt "model:ir.action,name:stock_location_inventory_value_report_action"
+msgid "Location Inventory Value"
+msgstr "Valor de l'inventari d'ubicació"
+
 msgctxt "model:ir.action,name:wizard_print_total_inventory"
 msgid "Total Inventory"
 msgstr "Total inventari"
@@ -127,6 +131,30 @@ msgid "Product"
 msgstr "Producte"
 
 msgctxt "report:stock.inventory.valued.jreport:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Code"
+msgstr "Codi"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Cost Value"
+msgstr "Valor de cost"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Inventory"
+msgstr "Inventari"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Inventory Total"
+msgstr "Inventari total"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
 msgid "Quantity"
 msgstr "Quantitat"
 

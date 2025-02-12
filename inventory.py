@@ -46,3 +46,20 @@ class InventoryValuedReport(JasperReport):
             with Transaction().set_context(data['context']):
                 return super(InventoryValuedReport, cls).execute(ids, data)
         return super(InventoryValuedReport, cls).execute(ids, data)
+
+class LocationInventoryValuedReport(JasperReport):
+    __name__ = 'stock.location.inventory.valued.jreport'
+
+    @classmethod
+    def execute(cls, ids, data):
+        pool = Pool()
+        Report = pool.get('stock.inventory.valued.jreport', type='report')
+        Product = pool.get('product.product')
+        product_ids = []
+        with Transaction().set_context():
+            pbl = Product.products_by_location(ids, with_childs=True)
+        for key, value in pbl.items():
+            if value != 0:
+                product_ids.append(key[1])
+        with Transaction().set_context(locations=ids):
+            return Report.execute(product_ids, data)
