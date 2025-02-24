@@ -47,5 +47,19 @@ copyright notices and license terms. -->
             <field name="model">stock.inventory,-1</field>
             <field name="action" ref="stock_blind_count_report_action"/>
         </record>
+
+        <record model="ir.action.report" id="stock_location_inventory_value_report_action">
+            <field name="name">Location Inventory Value</field>
+            <field name="model">product.product</field>
+            <field name="report_name">stock.location.inventory.valued.jreport</field>
+            <field name="report">stock_inventory_jreport/inventory_valued.jrxml</field>
+            <field name="extension">pdf</field>
+            <field name="template_extension">jrxml</field>
+        </record>
+        <record model="ir.action.keyword" id="tock_location_inventory_value_report_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">stock.location,-1</field>
+            <field name="action" ref="stock_location_inventory_value_report_action"/>
+        </record>
     </data>
 </tryton>

@@ -42,6 +42,10 @@ msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
 msgid "Stock Inventory Valued"
 msgstr "Inventario de stock valorado"
 
+msgctxt "model:ir.action,name:stock_location_inventory_value_report_action"
+msgid "Location Inventory Value"
+msgstr "Ubicación Inventario Valor"
+
 msgctxt "model:ir.action,name:wizard_print_total_inventory"
 msgid "Total Inventory"
 msgstr "Inventario total"
@@ -127,6 +131,30 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "report:stock.inventory.valued.jreport:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Cost Value"
+msgstr "Valor del costo"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Inventory"
+msgstr "Inventario"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Inventory Total"
+msgstr "Total de inventario"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "report:stock.location.inventory.valued.jreport:"
 msgid "Quantity"
 msgstr "Cantidad"
 
