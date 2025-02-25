@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <!-- The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
-<form>
+<form col="6">
     <label name="date"/>
     <field name="date"/>
-    <field name="products" colspan="4"/>
-    <field name="locations" colspan="4"/>
+    <field name="locations" colspan="6"/>
+    <field name="products" colspan="6"/>
     <label name="order"/>
     <field name="order"/>
     <label name="output_format"/>
     <field name="output_format"/>
+    <label name="timeout"/>
+    <field name="timeout"/>
 </form>

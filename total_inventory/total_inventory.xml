@@ -63,4 +63,11 @@ copyright notices and license terms. -->
             parent="stock.menu_inventory_form" action="wizard_print_total_inventory"
             icon="tryton-print"/>
     </data>
+    <data depends="stock_lot">
+        <record model="ir.ui.view" id="print_total_inventory_start_lot_view_form">
+            <field name="model">stock.inventory.print_total_inventory.start</field>
+            <field name="inherit" ref="print_total_inventory_start_view_form"/>
+            <field name="name">print_total_inventory_start_lot_form</field>
+        </record>
+    </data>
 </tryton>
