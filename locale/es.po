@@ -26,6 +26,14 @@ msgctxt "field:stock.inventory.print_total_inventory.start,products:"
 msgid "Products"
 msgstr "Productos"
 
+msgctxt "field:stock.inventory.print_total_inventory.start,timeout:"
+msgid "Timeout"
+msgstr "Se acabó el tiempo de espera"
+
+msgctxt "help:stock.inventory.print_total_inventory.start,timeout:"
+msgid "Timeout in seconds"
+msgstr "Tiempo de espera en segundos"
+
 msgctxt "model:ir.action,name:report_total_inventory"
 msgid "Total Inventory"
 msgstr "Inventario total"
