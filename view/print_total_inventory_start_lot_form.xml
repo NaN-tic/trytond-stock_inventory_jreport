@@ -1,0 +1,6 @@
+<data>
+    <xpath expr="//field[@name='date']" position="after">
+        <label name="group_by_lot"/>
+        <field name="group_by_lot"/>
+    </xpath>
+</data>
