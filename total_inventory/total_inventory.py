@@ -105,6 +105,7 @@ class PrintTotalInventory(Wizard):
             'output_format': self.start.output_format,
             'order': self.start.order,
             'timeout': self.start.timeout,
+            'group_by_lot': getattr(self.start, 'group_by_lot', False),
             }
         return action, data
 
