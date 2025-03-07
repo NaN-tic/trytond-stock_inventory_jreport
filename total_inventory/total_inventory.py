@@ -167,11 +167,13 @@ class TotalInventoryReport(HTMLReport):
         else:
             stock_date_end = Date.today()
 
+        quantities = data.get('quantities', 'positive')
+
         records = []
         with Transaction().set_context(stock_date_end=stock_date_end):
             grouping = ('product',)
             if data.get('group_by_lot'):
-                grouping = ('lot',)
+                grouping += ('lot',)
             for sub_products in grouped_slice(products, count=10000):
                 checker.check()
                 product_ids = [x.id for x in sub_products]
