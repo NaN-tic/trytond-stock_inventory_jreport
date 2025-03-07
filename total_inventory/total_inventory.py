@@ -52,6 +52,11 @@ class PrintTotalInventoryStart(ModelView):
         ('location', 'Location'),
         ('product', 'Product'),
         ], "Order", required=True)
+    quantities = fields.Selection([
+        ('all', 'All'),
+        ('positive', 'Positive'),
+        ('negative', 'Negative'),
+        ], "Quantities", required=True)
     timeout = fields.Integer('Timeout', required=True, help='Timeout in seconds')
 
     @staticmethod
@@ -60,6 +65,10 @@ class PrintTotalInventoryStart(ModelView):
         if warehouse:
             return [warehouse]
         return []
+
+    @staticmethod
+    def default_quantities():
+        return 'positive'
 
     @staticmethod
     def default_timeout():
@@ -100,12 +109,13 @@ class PrintTotalInventory(Wizard):
     def do_print_(self, action):
         data = {
             'date': self.start.date,
+            'quantities': self.start.quantities,
+            'group_by_lot': getattr(self.start, 'group_by_lot', False),
             'products': [x.id for x in self.start.products],
             'locations': [x.id for x in self.start.locations],
             'output_format': self.start.output_format,
             'order': self.start.order,
             'timeout': self.start.timeout,
-            'group_by_lot': getattr(self.start, 'group_by_lot', False),
             }
         return action, data
 
@@ -182,17 +192,22 @@ class TotalInventoryReport(HTMLReport):
                     grouping_filter=(product_ids,))
 
                 for key, qty in pbl.items():
-                    if qty > 0:
-                        location_id = key[0]
-                        product_id = key[1]
+                    if not qty:
+                        continue
+                    if quantities == 'positive' and qty < 0:
+                        continue
+                    elif quantities == 'negative' and qty > 0:
+                        continue
 
-                        record = {}
-                        record['quantity'] = qty
-                        record['location'] = locations_by_id[location_id]
-                        record['product'] = products_by_id[product_id]
-                        if data.get('group_by_lot'):
-                            record['lot'] = Lot(key[2]) if key[2] else None
-                        records.append(record)
+                    location_id = key[0]
+                    product_id = key[1]
+                    record = {}
+                    record['quantity'] = qty
+                    record['location'] = locations_by_id[location_id]
+                    record['product'] = products_by_id[product_id]
+                    if data.get('group_by_lot'):
+                        record['lot'] = Lot(key[2]) if key[2] else None
+                    records.append(record)
 
         company_id = Transaction().context.get('company')
 
