@@ -4,6 +4,8 @@ copyright notices and license terms. -->
 <form col="6">
     <label name="date"/>
     <field name="date"/>
+    <label name="quantities"/>
+    <field name="quantities"/>
     <field name="locations" colspan="6"/>
     <field name="products" colspan="6"/>
     <label name="order"/>
