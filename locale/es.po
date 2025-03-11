@@ -10,6 +10,10 @@ msgctxt "field:stock.inventory.print_total_inventory.start,date:"
 msgid "Date"
 msgstr "Fecha"
 
+msgctxt "field:stock.inventory.print_total_inventory.start,group_by_lot:"
+msgid "Group by Lot"
+msgstr "Agrupar por lote"
+
 msgctxt "field:stock.inventory.print_total_inventory.start,locations:"
 msgid "Locations"
 msgstr "Ubicaciones"
@@ -25,6 +29,10 @@ msgstr "Formato"
 msgctxt "field:stock.inventory.print_total_inventory.start,products:"
 msgid "Products"
 msgstr "Productos"
+
+msgctxt "field:stock.inventory.print_total_inventory.start,quantities:"
+msgid "Quantities"
+msgstr "Cantidades"
 
 msgctxt "field:stock.inventory.print_total_inventory.start,timeout:"
 msgid "Timeout"
@@ -185,6 +193,18 @@ msgstr "HTML"
 msgctxt "selection:stock.inventory.print_total_inventory.start,output_format:"
 msgid "PDF"
 msgstr "PDF"
+
+msgctxt "selection:stock.inventory.print_total_inventory.start,quantities:"
+msgid "All"
+msgstr "Todo"
+
+msgctxt "selection:stock.inventory.print_total_inventory.start,quantities:"
+msgid "Negative"
+msgstr "Negativo"
+
+msgctxt "selection:stock.inventory.print_total_inventory.start,quantities:"
+msgid "Positive"
+msgstr "Positivo"
 
 msgctxt "wizard_button:stock.inventory.print_total_inventory,start,end:"
 msgid "Cancel"
