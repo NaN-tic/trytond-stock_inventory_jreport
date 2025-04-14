@@ -212,7 +212,8 @@ class TotalInventoryReport(HTMLReport):
         company_id = Transaction().context.get('company')
 
         parameters = {}
-        parameters['company'] = Company(company_id) if company_id else ''
+        parameters['company'] = (Company(company_id)
+            if company_id is not None and company_id >= 0 else '')
         parameters['now'] = format_datetime(datetime.now(), format='short',
             locale=Transaction().language or 'en')
         if data['order'] == 'product':
