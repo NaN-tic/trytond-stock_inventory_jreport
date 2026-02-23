@@ -1,15 +1,20 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-import os
 from datetime import datetime
+from tempfile import NamedTemporaryFile
 from babel.dates import format_datetime
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.rpc import RPC
 from trytond.tools import grouped_slice
-from trytond.modules.html_report.html_report import HTMLReport
+from trytond.report import Report
+from trytond.modules.html_report.dominate_report import DominateReportMixin
+from trytond.modules.html_report.i18n import _
+from dominate.util import raw
+from dominate.tags import div, h2, strong, style, table, tbody, td, th, thead, tr
+from openpyxl import Workbook
 
 class TimeoutException(Exception):
     pass
@@ -117,13 +122,18 @@ class PrintTotalInventory(Wizard):
             'order': self.start.order,
             'timeout': self.start.timeout,
             }
+        if self.start.output_format == 'xlsx':
+            ActionReport = Pool().get('ir.action.report')
+            action, = ActionReport.search([
+                    ('report_name', '=', 'stock_inventory_jreport.total_inventory_xlsx'),
+                    ])
         return action, data
 
     def transition_print_(self):
         return 'end'
 
 
-class TotalInventoryReport(HTMLReport):
+class TotalInventoryReport(DominateReportMixin, metaclass=PoolMeta):
     'Total Inventory Report'
     __name__ = 'stock_inventory_jreport.total_inventory'
 
@@ -225,22 +235,176 @@ class TotalInventoryReport(HTMLReport):
         return records, parameters
 
     @classmethod
+    def show_lines(cls, records, parameters):
+        render = cls.render
+        has_lot = parameters.get('has_lot')
+        sort_attribute = parameters.get('sort_atribute')
+
+        def _sort_value(item):
+            value = item
+            for part in sort_attribute.split('.'):
+                if isinstance(value, dict):
+                    value = value.get(part)
+                else:
+                    value = getattr(value, part, '')
+            return value or ''
+
+        lines_table = table()
+        with lines_table:
+            with thead():
+                with tr():
+                    th(_('Location'))
+                    th(_('Product'))
+                    if has_lot:
+                        th(_('Lot'))
+                    th(_('Quantity'), style='text-align: right')
+            with tbody():
+                for record in sorted(records, key=_sort_value):
+                    product = record['product']
+                    with tr():
+                        td(record['location'].name)
+                        td(product.rec_name)
+                        if has_lot:
+                            lot = record.get('lot')
+                            td(lot.rec_name if lot else '')
+                        td(render(record['quantity'],
+                                digits=product.default_uom.digits),
+                            style='text-align: right')
+        return lines_table
+
+    @classmethod
+    def title(cls, action, data, records):
+        parameters = data.get('parameters', {}) if data else {}
+        company = parameters.get('company')
+        company_name = company.rec_name if company else ''
+        now = parameters.get('now', '')
+        title = _('Total Inventory')
+        if company_name and now:
+            title = '%s - %s - %s' % (title, company_name, now)
+        elif company_name:
+            title = '%s - %s' % (title, company_name)
+        elif now:
+            title = '%s - %s' % (title, now)
+        return title
+
+    @classmethod
+    def body(cls, action, data, records):
+        parameters = data['parameters']
+        title = cls.title(action, data, records)
+        wrapper = div()
+        with wrapper:
+            style(raw("""
+@media print {
+  #header-details {
+    display: none;
+  }
+}
+"""))
+        with div(cls='container-fluid') as container:
+            with div(cls='row'):
+                with div(cls='col-md-12') as column:
+                    h2(title)
+                    if data['records']:
+                        column.add(cls.show_lines(
+                            data['records'], parameters))
+                    else:
+                        strong(_('No records found'))
+        wrapper.add(container)
+        return wrapper
+
+    @classmethod
     def execute(cls, ids, data):
         with Transaction().set_context(active_test=False):
             records, parameters = cls.prepare(data)
 
-        context = Transaction().context.copy()
-        context['report_lang'] = Transaction().language
-        context['report_translations'] = os.path.join(
-                os.path.dirname(__file__), 'translations')
-        context['timeout_report'] = parameters.get('timeout', 60)
+        name = 'stock_inventory_jreport.total_inventory'
+        return super().execute([], {
+            'name': name,
+            'model': 'stock.inventory',
+            'records': records,
+            'parameters': parameters,
+            'output_format': data.get('output_format', 'pdf'),
+            })
 
-        with Transaction().set_context(**context):
-            name = 'stock_inventory_jreport.total_inventory'
-            return super().execute([], {
-                'name': name,
-                'model': 'stock.inventory',
-                'records': records,
+class TotalInventoryXlsxReport(Report, metaclass=PoolMeta):
+    __name__ = 'stock_inventory_jreport.total_inventory_xlsx'
+
+    @classmethod
+    def execute(cls, ids, data):
+        pool = Pool()
+        ActionReport = pool.get('ir.action.report')
+        action_report, = ActionReport.search([
+                ('report_name', '=', cls.__name__)
+                ])
+        cls.check_access(action_report, action_report.model, ids)
+        with Transaction().set_context(active_test=False):
+            records, parameters = TotalInventoryReport.prepare(data)
+        content = cls.get_content(records, parameters, data)
+        filename = action_report.name
+        return 'xlsx', content, action_report.direct_print, filename
+
+    @classmethod
+    def get_content(cls, records, parameters, data):
+        render = TotalInventoryReport.render
+        wb = Workbook()
+        ws = wb.active
+        ws.title = _('Total Inventory')[:31]
+
+        def xls(value, **kwargs):
+            if isinstance(value, str):
+                try:
+                    return float(value.replace(',', '.'))
+                except ValueError:
+                    return value
+            return value
+
+        title = TotalInventoryReport.title(
+            None,
+            {
                 'parameters': parameters,
-                'output_format': data.get('output_format', 'pdf'),
-                })
+                'records': records,
+            },
+            records)
+        ws.append([title])
+        company = parameters.get('company')
+        if company:
+            ws.append([company.rec_name])
+        if parameters.get('now'):
+            ws.append([parameters['now']])
+        ws.append([])
+
+        has_lot = parameters.get('has_lot')
+        sort_attribute = parameters.get('sort_atribute')
+
+        def _sort_value(item):
+            value = item
+            for part in sort_attribute.split('.'):
+                if isinstance(value, dict):
+                    value = value.get(part)
+                else:
+                    value = getattr(value, part, None)
+            return value
+
+        headers = [_('Location'), _('Product')]
+        if has_lot:
+            headers.append(_('Lot'))
+        headers.append(_('Quantity'))
+        ws.append(headers)
+
+        for record in sorted(records, key=_sort_value):
+            product = record['product']
+            row = [
+                record['location'].name,
+                product.rec_name,
+                ]
+            if has_lot:
+                lot = record.get('lot')
+                row.append(lot.rec_name if lot else '')
+            row.append(xls(render(
+                record['quantity'], digits=product.default_uom.digits)))
+            ws.append(row)
+
+        with NamedTemporaryFile() as tmp_file:
+            wb.save(tmp_file.name)
+            tmp_file.seek(0)
+            return bytes(tmp_file.read())

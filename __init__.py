@@ -5,7 +5,7 @@ from trytond.pool import Pool
 from . import inventory
 from . import location
 from . import product
-from . import total_inventory
+from .total_inventory import total_inventory
 
 def register():
     module = 'stock_inventory_jreport'
@@ -20,4 +20,13 @@ def register():
         inventory.LocationInventoryValuedReport,
         module=module, type_='report')
 
-    total_inventory.register(module)
+    Pool.register(
+        total_inventory.PrintTotalInventoryStart,
+        module=module, type_='model')
+    Pool.register(
+        total_inventory.PrintTotalInventory,
+        module=module, type_='wizard')
+    Pool.register(
+        total_inventory.TotalInventoryReport,
+        total_inventory.TotalInventoryXlsxReport,
+        module=module, type_='report')
