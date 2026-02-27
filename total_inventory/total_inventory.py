@@ -10,7 +10,7 @@ from trytond.wizard import Wizard, StateView, StateReport, Button
 from trytond.rpc import RPC
 from trytond.tools import grouped_slice
 from trytond.report import Report
-from trytond.modules.html_report.dominate_report import DominateReportMixin
+from trytond.modules.html_report.dominate_report import DominateReport
 from trytond.modules.html_report.i18n import _
 from dominate.util import raw
 from dominate.tags import div, h2, strong, style, table, tbody, td, th, thead, tr
@@ -133,7 +133,7 @@ class PrintTotalInventory(Wizard):
         return 'end'
 
 
-class TotalInventoryReport(DominateReportMixin, metaclass=PoolMeta):
+class TotalInventoryReport(DominateReport):
     'Total Inventory Report'
     __name__ = 'stock_inventory_jreport.total_inventory'
 
