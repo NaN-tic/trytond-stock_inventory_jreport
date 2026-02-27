@@ -213,3 +213,27 @@ msgstr "Cancelar"
 msgctxt "wizard_button:stock.inventory.print_total_inventory,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
+
+msgctxt "html_report:h:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "html_report:h:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "html_report:h:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "html_report:h:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "html_report:h:"
+msgid "Total Inventory"
+msgstr "Inventario total"
+
+msgctxt "html_report:h:"
+msgid "No records found"
+msgstr "No se encontraron registros"
