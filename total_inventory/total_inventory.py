@@ -11,6 +11,7 @@ from trytond.rpc import RPC
 from trytond.tools import grouped_slice
 from trytond.report import Report
 from trytond.modules.html_report.dominate_report import DominateReport
+from trytond.modules.html_report.engine import render as html_render
 from trytond.modules.html_report.i18n import _
 from dominate.util import raw
 from dominate.tags import div, h2, strong, style, table, tbody, td, th, thead, tr
@@ -236,7 +237,6 @@ class TotalInventoryReport(DominateReport):
 
     @classmethod
     def show_lines(cls, records, parameters):
-        render = cls.render
         has_lot = parameters.get('has_lot')
         sort_attribute = parameters.get('sort_atribute')
 
@@ -267,7 +267,7 @@ class TotalInventoryReport(DominateReport):
                         if has_lot:
                             lot = record.get('lot')
                             td(lot.rec_name if lot else '')
-                        td(render(record['quantity'],
+                        td(html_render(record['quantity'],
                                 digits=product.default_uom.digits),
                             style='text-align: right')
         return lines_table
@@ -345,7 +345,6 @@ class TotalInventoryXlsxReport(Report, metaclass=PoolMeta):
 
     @classmethod
     def get_content(cls, records, parameters, data):
-        render = TotalInventoryReport.render
         wb = Workbook()
         ws = wb.active
         ws.title = _('Total Inventory')[:31]
@@ -400,7 +399,7 @@ class TotalInventoryXlsxReport(Report, metaclass=PoolMeta):
             if has_lot:
                 lot = record.get('lot')
                 row.append(lot.rec_name if lot else '')
-            row.append(xls(render(
+            row.append(xls(html_render(
                 record['quantity'], digits=product.default_uom.digits)))
             ws.append(row)
 
