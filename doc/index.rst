@@ -1,4 +1,4 @@
 Stock Inventory Jasper Report Module
 ####################################
 
-The stock_inventory_jreport module adds a report of inventory to warehouse.
+The stock_inventory_report module adds a total inventory report wizard.

@@ -7,10 +7,9 @@ import os
 import io
 from configparser import ConfigParser
 
-MODULE = 'stock_inventory_jreport'
+MODULE = 'stock_inventory_report'
 PREFIX = 'nantic'
 MODULE2PREFIX = {
-    'jasper_reports': 'nantic',
     'html_report': 'nantic',
 }
 

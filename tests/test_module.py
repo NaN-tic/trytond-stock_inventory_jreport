@@ -6,9 +6,9 @@ from trytond.modules.company.tests import CompanyTestMixin
 from trytond.tests.test_tryton import ModuleTestCase
 
 
-class StockInventoryJreportTestCase(CompanyTestMixin, ModuleTestCase):
-    'Test StockInventoryJreport module'
-    module = 'stock_inventory_jreport'
+class StockInventoryReportTestCase(CompanyTestMixin, ModuleTestCase):
+    'Test StockInventoryReport module'
+    module = 'stock_inventory_report'
     extras = ['stock_lot']
 
 

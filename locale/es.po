@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.product,inventory_cost_value:"
-msgid "Inventory Cost Value"
-msgstr "Valor de coste de inventario"
-
 msgctxt "field:stock.inventory.print_total_inventory.start,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -36,31 +32,43 @@ msgstr "Cantidades"
 
 msgctxt "field:stock.inventory.print_total_inventory.start,timeout:"
 msgid "Timeout"
-msgstr "Se acabó el tiempo de espera"
+msgstr "Tiempo de espera"
 
 msgctxt "help:stock.inventory.print_total_inventory.start,timeout:"
 msgid "Timeout in seconds"
 msgstr "Tiempo de espera en segundos"
 
+msgctxt "html_report:h:"
+msgid "Location"
+msgstr "Ubicación"
+
+msgctxt "html_report:h:"
+msgid "Lot"
+msgstr "Lote"
+
+msgctxt "html_report:h:"
+msgid "No records found"
+msgstr "No se encontraron registros"
+
+msgctxt "html_report:h:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "html_report:h:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "html_report:h:"
+msgid "Total Inventory"
+msgstr "Inventario total"
+
 msgctxt "model:ir.action,name:report_total_inventory"
 msgid "Total Inventory"
 msgstr "Inventario total"
 
-msgctxt "model:ir.action,name:stock_blind_count_report_action"
-msgid "Blind Count"
-msgstr "Inventario ciego"
-
-msgctxt "model:ir.action,name:stock_inventory_report_action"
-msgid "Stock Inventory"
-msgstr "Inventario de stock"
-
-msgctxt "model:ir.action,name:stock_inventory_valued_report_action"
-msgid "Stock Inventory Valued"
-msgstr "Inventario de stock valorado"
-
-msgctxt "model:ir.action,name:stock_location_inventory_value_report_action"
-msgid "Location Inventory Value"
-msgstr "Ubicación Inventario Valor"
+msgctxt "model:ir.action,name:report_total_inventory_xlsx"
+msgid "Total Inventory"
+msgstr "Inventario total"
 
 msgctxt "model:ir.action,name:wizard_print_total_inventory"
 msgid "Total Inventory"
@@ -70,109 +78,9 @@ msgctxt "model:ir.ui.menu,name:menu_print_total_inventory"
 msgid "Total Inventory"
 msgstr "Inventario total"
 
-msgctxt "model:stock.inventory.print_total_inventory.start,name:"
-msgid "Print Total Inventory"
-msgstr "Imprimir inventario total"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Code"
-msgstr "Código"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Inventory"
-msgstr "Inventario"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Lot"
-msgstr "Lote"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Page"
-msgstr "Página"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "report:stock.blind_count.jreport:"
-msgid "Quantity"
-msgstr "Cantidad"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Code"
-msgstr "Código"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Expected Quantity"
-msgstr "Cantidad estimada"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Inventory"
-msgstr "Inventario"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Lot"
-msgstr "Lote"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Page"
-msgstr "Página"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "report:stock.inventory.jreport:"
-msgid "Quantity"
-msgstr "Cantidad"
-
-msgctxt "report:stock.inventory.valued.jreport:"
-msgid "Code"
-msgstr "Código"
-
-msgctxt "report:stock.inventory.valued.jreport:"
-msgid "Cost Value"
-msgstr "Valor de coste"
-
-msgctxt "report:stock.inventory.valued.jreport:"
-msgid "Inventory"
-msgstr "Inventario"
-
-msgctxt "report:stock.inventory.valued.jreport:"
-msgid "Inventory Total"
-msgstr "Total inventario"
-
-msgctxt "report:stock.inventory.valued.jreport:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "report:stock.inventory.valued.jreport:"
-msgid "Quantity"
-msgstr "Cantidad"
-
-msgctxt "report:stock.location.inventory.valued.jreport:"
-msgid "Code"
-msgstr "Código"
-
-msgctxt "report:stock.location.inventory.valued.jreport:"
-msgid "Cost Value"
-msgstr "Valor del costo"
-
-msgctxt "report:stock.location.inventory.valued.jreport:"
-msgid "Inventory"
-msgstr "Inventario"
-
-msgctxt "report:stock.location.inventory.valued.jreport:"
-msgid "Inventory Total"
-msgstr "Total de inventario"
-
-msgctxt "report:stock.location.inventory.valued.jreport:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "report:stock.location.inventory.valued.jreport:"
-msgid "Quantity"
-msgstr "Cantidad"
+msgctxt "model:stock.inventory.print_total_inventory.start,string:"
+msgid "Stock Inventory Print Total Inventory Start"
+msgstr "Inicio de impresión del inventario total"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,order:"
 msgid "Location"
@@ -213,27 +121,3 @@ msgstr "Cancelar"
 msgctxt "wizard_button:stock.inventory.print_total_inventory,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
-
-msgctxt "html_report:h:"
-msgid "Location"
-msgstr "Ubicación"
-
-msgctxt "html_report:h:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "html_report:h:"
-msgid "Lot"
-msgstr "Lote"
-
-msgctxt "html_report:h:"
-msgid "Quantity"
-msgstr "Cantidad"
-
-msgctxt "html_report:h:"
-msgid "Total Inventory"
-msgstr "Inventario total"
-
-msgctxt "html_report:h:"
-msgid "No records found"
-msgstr "No se encontraron registros"
