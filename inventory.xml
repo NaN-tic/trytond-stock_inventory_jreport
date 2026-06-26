@@ -1,65 +1,54 @@
 <?xml version="1.0"?>
-<!-- This file is part of stock_inventory_jreport module for Tryton.
-The COPYRIGHT file at the top level of this repository contains the full
+<!-- The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.action.report"
-            id="stock_inventory_valued_report_action">
-            <field name="name">Stock Inventory Valued</field>
-            <field name="model">product.product</field>
-            <field name="report_name">stock.inventory.valued.jreport</field>
-            <field name="report">stock_inventory_jreport/inventory_valued.jrxml</field>
-            <field name="extension">pdf</field>
-            <field name="template_extension">jrxml</field>
+        <record model="ir.action.report" id="html_report.html_report_total_inventory">
+            <field name="active" eval="False"/>
         </record>
-        <record model="ir.action.keyword"
-            id="stock_inventory_valued_report_keyword">
-            <field name="keyword">form_print</field>
-            <field name="model">product.product,-1</field>
-            <field name="action" ref="stock_inventory_valued_report_action"/>
+        <record model="ir.action.report" id="html_report.html_report_total_inventory_xlsx">
+            <field name="active" eval="False"/>
+        </record>
+        <record model="ir.action.wizard" id="html_report.wizard_print_total_inventory">
+            <field name="active" eval="False"/>
+        </record>
+        <record model="ir.ui.menu" id="html_report.menu_print_total_inventory">
+            <field name="active" eval="False"/>
         </record>
 
-        <record model="ir.action.report" id="stock_inventory_report_action">
-            <field name="name">Stock Inventory</field>
+        <record model="ir.action.report" id="report_total_inventory">
+            <field name="name">Total Inventory</field>
+            <field name="report_name">stock_inventory_report.total_inventory</field>
             <field name="model">stock.inventory</field>
-            <field name="report_name">stock.inventory.jreport</field>
-            <field name="report">stock_inventory_jreport/inventory.jrxml</field>
             <field name="extension">pdf</field>
-            <field name="template_extension">jrxml</field>
+            <field name="template_extension">html</field>
         </record>
-        <record model="ir.action.keyword" id="stock_inventory_report_keyword">
-            <field name="keyword">form_print</field>
-            <field name="model">stock.inventory,-1</field>
-            <field name="action" ref="stock_inventory_report_action"/>
-        </record>
-
-        <record model="ir.action.report" id="stock_blind_count_report_action">
-            <field name="name">Blind Count</field>
+        <record model="ir.action.report" id="report_total_inventory_xlsx">
+            <field name="name">Total Inventory</field>
+            <field name="report_name">stock_inventory_report.total_inventory_xlsx</field>
             <field name="model">stock.inventory</field>
-            <field name="report_name">stock.blind_count.jreport</field>
-            <field name="report">stock_inventory_jreport/blind_count.jrxml</field>
-            <field name="extension">pdf</field>
-            <field name="template_extension">jrxml</field>
-        </record>
-        <record model="ir.action.keyword" id="stock_blind_count_report_keyword">
-            <field name="keyword">form_print</field>
-            <field name="model">stock.inventory,-1</field>
-            <field name="action" ref="stock_blind_count_report_action"/>
+            <field name="extension">xlsx</field>
         </record>
 
-        <record model="ir.action.report" id="stock_location_inventory_value_report_action">
-            <field name="name">Location Inventory Value</field>
-            <field name="model">product.product</field>
-            <field name="report_name">stock.location.inventory.valued.jreport</field>
-            <field name="report">stock_inventory_jreport/inventory_valued.jrxml</field>
-            <field name="extension">pdf</field>
-            <field name="template_extension">jrxml</field>
+        <record model="ir.ui.view" id="print_total_inventory_start_view_form">
+            <field name="model">stock.inventory.print_total_inventory.start</field>
+            <field name="type">form</field>
+            <field name="name">print_total_inventory_start_form</field>
         </record>
-        <record model="ir.action.keyword" id="tock_location_inventory_value_report_keyword">
-            <field name="keyword">form_print</field>
-            <field name="model">stock.location,-1</field>
-            <field name="action" ref="stock_location_inventory_value_report_action"/>
+        <record model="ir.action.wizard" id="wizard_print_total_inventory">
+            <field name="name">Total Inventory</field>
+            <field name="wiz_name">stock.inventory.print_total_inventory</field>
+        </record>
+
+        <menuitem id="menu_print_total_inventory" name="Total Inventory"
+            parent="stock.menu_inventory_form" action="wizard_print_total_inventory"
+            icon="tryton-print"/>
+    </data>
+    <data depends="stock_lot">
+        <record model="ir.ui.view" id="print_total_inventory_start_lot_view_form">
+            <field name="model">stock.inventory.print_total_inventory.start</field>
+            <field name="inherit" ref="print_total_inventory_start_view_form"/>
+            <field name="name">print_total_inventory_start_lot_form</field>
         </record>
     </data>
 </tryton>
