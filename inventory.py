@@ -1,3 +1,4 @@
+
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
 from datetime import datetime
@@ -11,7 +12,8 @@ from openpyxl import Workbook
 from trytond.model import ModelView, fields
 from trytond.modules.html_report.dominate_report import DominateReport
 from trytond.modules.html_report.engine import render as html_render
-from trytond.modules.html_report.i18n import _
+from trytond.modules.xgettext import _
+
 from trytond.pool import Pool, PoolMeta
 from trytond.report import Report
 from trytond.rpc import RPC
@@ -19,10 +21,8 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.wizard import Button, StateReport, StateView, Wizard
 
-
 class TimeoutException(Exception):
     pass
-
 
 class TimeoutChecker:
     def __init__(self, timeout, callback):
@@ -37,7 +37,6 @@ class TimeoutChecker:
     def check(self):
         if self.elapsed > self._timeout:
             self._callback()
-
 
 class PrintTotalInventoryStart(ModelView):
     'Print Total Inventory'
@@ -97,7 +96,6 @@ class PrintTotalInventoryStart(ModelView):
             return
         cls.group_by_lot = fields.Boolean('Group by Lot')
 
-
 class PrintTotalInventory(Wizard):
     'Print Total Inventory'
     __name__ = 'stock.inventory.print_total_inventory'
@@ -136,7 +134,6 @@ class PrintTotalInventory(Wizard):
 
     def transition_print_(self):
         return 'end'
-
 
 class TotalInventoryReport(DominateReport):
     'Total Inventory Report'
@@ -320,7 +317,6 @@ class TotalInventoryReport(DominateReport):
             'parameters': parameters,
             'output_format': data.get('output_format', 'pdf'),
             })
-
 
 class TotalInventoryXlsxReport(Report, metaclass=PoolMeta):
     __name__ = 'stock_inventory_report.total_inventory_xlsx'
