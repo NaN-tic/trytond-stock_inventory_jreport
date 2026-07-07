@@ -38,27 +38,27 @@ msgctxt "help:stock.inventory.print_total_inventory.start,timeout:"
 msgid "Timeout in seconds"
 msgstr "Temps d'espera en segons"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Location"
 msgstr "Ubicació"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Lot"
 msgstr "Lot"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "No records found"
 msgstr "No s'han trobat registres"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Product"
 msgstr "Producte"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "html_report:h:"
+msgctxt "xgettext:x:"
 msgid "Total Inventory"
 msgstr "Inventari total"
 
