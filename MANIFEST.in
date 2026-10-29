@@ -12,3 +12,6 @@ include locale/*.po
 include doc/*
 include icons/*
 include tests/*.rst
+
+include fonts/*.ttf
+include fonts/LICENSE*

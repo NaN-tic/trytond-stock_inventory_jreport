@@ -75,8 +75,8 @@ msgid "Total Inventory"
 msgstr "Inventario total"
 
 msgctxt "model:ir.ui.menu,name:menu_print_total_inventory"
-msgid "Total Inventory"
-msgstr "Inventario total"
+msgid "Inventory"
+msgstr "Inventario"
 
 msgctxt "model:stock.inventory.print_total_inventory.start,string:"
 msgid "Stock Inventory Print Total Inventory Start"
@@ -93,10 +93,6 @@ msgstr "Producto"
 msgctxt "selection:stock.inventory.print_total_inventory.start,output_format:"
 msgid "Excel"
 msgstr "Excel"
-
-msgctxt "selection:stock.inventory.print_total_inventory.start,output_format:"
-msgid "HTML"
-msgstr "HTML"
 
 msgctxt "selection:stock.inventory.print_total_inventory.start,output_format:"
 msgid "PDF"
@@ -121,3 +117,43 @@ msgstr "Cancelar"
 msgctxt "wizard_button:stock.inventory.print_total_inventory,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
+
+msgctxt "field:stock.inventory.print_total_inventory.start,valued:"
+msgid "Valued Inventory"
+msgstr "Inventario valorado"
+
+msgctxt "help:stock.inventory.print_total_inventory.start,valued:"
+msgid "Show current unit costs and inventory values."
+msgstr "Muestra los costes unitarios actuales y los valores del inventario."
+
+msgctxt "xgettext:x:"
+msgid "Unit Cost"
+msgstr "Coste unitario"
+
+msgctxt "xgettext:x:"
+msgid "Value"
+msgstr "Valor"
+
+msgctxt "xgettext:x:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "xgettext:x:"
+msgid "Inventory report time limit exceeded."
+msgstr "Se ha superado el tiempo límite del informe de inventario."
+
+msgctxt "field:stock.inventory.print_total_inventory.timeout,message:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "wizard_button:stock.inventory.print_total_inventory,timed_out,end:"
+msgid "Close"
+msgstr "Cerrar"
+
+msgctxt "wizard_button:stock.inventory.print_total_inventory,timed_out,start:"
+msgid "Change Parameters"
+msgstr "Cambiar los parámetros"
+
+msgctxt "xgettext:x:"
+msgid "Inventory report time limit exceeded. Reduce the selection or increase the timeout and try again."
+msgstr "Se ha superado el tiempo límite del informe de inventario. Reduce la selección o aumenta el tiempo límite y vuelve a intentarlo."
