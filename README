@@ -1,5 +1,19 @@
 This Module runs with the Tryton application platform.
 
+Total inventory
+---------------
+
+Open Logistics > Reporting > Total Inventory to export PDF (fpdf2) or Excel
+(openpyxl). Valued Inventory adds current unit costs, line values and a total
+in company currency. When grouping by lot, the lot cost is used if available
+(e.g. with stock_lot_cost); otherwise the product cost is used. The date filters
+stock quantities, while valuation uses current costs. Missing costs are zero.
+
+The wizard generates the report once and opens it through the standard report
+action, without storing the file in its session. If its time limit is exceeded,
+it shows an explanation and allows returning to the parameters without losing
+the selection.
+
 Installing
 ----------
 

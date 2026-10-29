@@ -35,13 +35,18 @@ copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">print_total_inventory_start_form</field>
         </record>
+        <record model="ir.ui.view" id="print_total_inventory_timeout_view_form">
+            <field name="model">stock.inventory.print_total_inventory.timeout</field>
+            <field name="type">form</field>
+            <field name="name">print_total_inventory_timeout_form</field>
+        </record>
         <record model="ir.action.wizard" id="wizard_print_total_inventory">
             <field name="name">Total Inventory</field>
             <field name="wiz_name">stock.inventory.print_total_inventory</field>
         </record>
 
-        <menuitem id="menu_print_total_inventory" name="Total Inventory"
-            parent="stock.menu_inventory_form" action="wizard_print_total_inventory"
+        <menuitem id="menu_print_total_inventory" name="Inventory"
+            parent="stock.menu_reporting" action="wizard_print_total_inventory"
             icon="tryton-print"/>
     </data>
     <data depends="stock_lot">

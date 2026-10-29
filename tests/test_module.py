@@ -8,7 +8,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 
 class StockInventoryReportTestCase(CompanyTestMixin, ModuleTestCase):
     'Test StockInventoryReport module'
-    module = 'stock_inventory_report'
+    module = 'stock_inventory_jreport'
     extras = ['stock_lot']
 
 
